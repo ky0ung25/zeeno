@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeeno | Daily Vision Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #fdf9f5;
+      --cream: #fef5ea;
+      --orange: #E8763A;
+      --orange-light: #F5A265;
+      --orange-pale: #FDE8D4;
+      --orange-xpale: #FEF4EC;
+      --cerulean: #3A7EC8;
+      --cerulean-light: #6AA3DC;
+      --cerulean-pale: #D4E8F8;
+      --cerulean-xpale: #EEF5FC;
+      --ocean: #1A5C96;
+      --text-dark: #1a1a2e;
+      --text-mid: #4a4a6a;
+      --text-light: #8888aa;
+      --border: #e8e8f0;
+      --border-orange: rgba(232,118,58,0.2);
+      --border-blue: rgba(58,126,200,0.2);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .announcement {
+      background: var(--orange);
+      color: #fff;
+      text-align: center;
+      padding: 9px 16px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 68px;
+    }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 1.7rem; font-weight: 700; color: var(--orange); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange); color: #fff; padding: 10px 26px;
+      border-radius: 100px; text-decoration: none; font-size: 0.875rem; font-weight: 600;
+      transition: all 0.25s; box-shadow: 0 2px 12px rgba(232,118,58,0.25);
+    }
+    .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--off-white);
+      overflow: hidden; position: relative;
+      padding: 80px 56px 0; min-height: 90vh;
+      display: flex; align-items: center;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -180px; right: -180px;
+      width: 640px; height: 640px;
+      background: radial-gradient(circle, rgba(245,162,101,0.3) 0%, rgba(254,244,236,0.3) 50%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -80px; left: -80px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(58,126,200,0.08) 0%, transparent 65%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; position: relative; z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange-pale); border: 1px solid var(--border-orange);
+      border-radius: 100px; padding: 6px 16px; font-size: 0.75rem;
+      color: var(--orange); font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .badge-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; animation: blink 2.5s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero h1 {
+      font-family: 'Fraunces', serif; font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; font-weight: 300; color: var(--orange); }
+    .hero-sub { font-size: 1.05rem; color: var(--text-mid); max-width: 480px; line-height: 1.78; margin-bottom: 40px; }
+    .hero-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-primary {
+      background: var(--orange); color: #fff; padding: 16px 36px;
+      border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 1rem;
+      transition: all 0.25s; box-shadow: 0 4px 20px rgba(232,118,58,0.28); display: inline-block;
+    }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,118,58,0.4); }
+    .btn-ghost { color: var(--text-mid); text-decoration: none; font-weight: 500; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .btn-ghost:hover { color: var(--orange); }
+    .btn-ghost::after { content: '→'; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 20px; }
+    .trust-item { font-size: 0.8rem; color: var(--text-light); display: flex; align-items: center; gap: 6px; font-weight: 500; }
+    .trust-item::before { content: '✓'; color: var(--orange); font-weight: 700; }
+
+    /* Hero gummy stage */
+    .hero-visual { position: relative; display: flex; justify-content: center; align-items: flex-end; }
+    .gummy-stage { position: relative; width: 380px; height: 480px; }
+    .gummy-big {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 230px; height: 230px;
+      background: radial-gradient(circle at 33% 27%, #f8c08a, #e8763a, #c4501a);
+      border-radius: 48px;
+      box-shadow: 0 32px 80px rgba(232,118,58,0.32), 0 8px 24px rgba(232,118,58,0.18), inset 0 3px 12px rgba(255,255,255,0.28);
+      animation: bob 6s ease-in-out infinite;
+    }
+    .gummy-big::before {
+      content: ''; position: absolute; top: 18%; left: 21%; width: 36%; height: 20%;
+      background: rgba(255,255,255,0.22); border-radius: 50%; filter: blur(6px); transform: rotate(-12deg);
+    }
+    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-14px)} }
+    .float-card {
+      position: absolute; background: #fff; border-radius: 16px; padding: 14px 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.09); font-size: 0.82rem; font-weight: 500; white-space: nowrap;
+    }
+    .fc-label { font-size: 0.7rem; color: var(--text-light); font-weight: 400; margin-bottom: 2px; }
+    .fc-val { font-size: 1.1rem; font-weight: 700; }
+    .card-1 { top: 40px; left: 0; color: var(--ocean); border: 1px solid var(--cerulean-pale); animation: floatA 5s ease-in-out infinite; }
+    .card-2 { top: 130px; right: 0; color: var(--orange); border: 1px solid var(--orange-pale); animation: floatB 5.5s ease-in-out infinite; }
+    .card-3 { top: 240px; left: 10px; color: var(--cerulean); border: 1px solid var(--cerulean-pale); animation: floatA 6.5s ease-in-out infinite 1s; }
+    @keyframes floatA { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes floatB { 0%,100%{transform:translateY(-4px)} 50%{transform:translateY(6px)} }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: var(--orange); padding: 28px 56px; display: flex; justify-content: center; }
+    .stat-item { text-align: center; padding: 0 52px; position: relative; flex: 1; max-width: 220px; }
+    .stat-item+.stat-item::before { content:''; position:absolute; left:0; top:10%; bottom:10%; width:1px; background:rgba(255,255,255,0.3); }
+    .stat-num { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 700; color: #fff; line-height: 1; }
+    .stat-label { font-size: 0.77rem; color: rgba(255,255,255,0.8); margin-top: 4px; }
+
+    /* ── SHARED ── */
+    section { padding: 100px 56px; }
+    .max-w { max-width: 1200px; margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .section-title { font-family: 'Fraunces', serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 18px; }
+    .section-title em { font-style: italic; font-weight: 300; color: var(--orange); }
+    .section-title .blue { color: var(--cerulean); font-style: italic; font-weight: 300; }
+    .section-body { font-size: 1rem; color: var(--text-mid); line-height: 1.8; max-width: 520px; }
+
+    /* ── PAIN ── */
+    .pain-section { background: var(--off-white); }
+    .pain-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .pain-list { list-style: none; margin-top: 36px; }
+    .pain-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .pain-item:last-child { border-bottom: none; }
+    .pain-icon-wrap { width: 40px; height: 40px; flex-shrink: 0; background: var(--orange-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .pain-text { color: var(--text-mid); font-size: 0.95rem; line-height: 1.6; }
+    .pain-text strong { color: var(--text-dark); font-weight: 600; }
+    .beauty-mosaic { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 12px; }
+    .mosaic-card { border-radius: 20px; display: flex; align-items: flex-end; min-height: 160px; position: relative; padding: 20px; overflow: hidden; }
+    .mosaic-card.tall { grid-row: span 2; min-height: 340px; }
+    .mosaic-card.sunrise { background: linear-gradient(135deg, #FDE8C0 0%, #F5A265 50%, #E8763A 100%); }
+    .mosaic-card.sky { background: linear-gradient(135deg, #D4E8F8 0%, #6AA3DC 60%, #3A7EC8 100%); }
+    .mosaic-card.ocean { background: linear-gradient(160deg, #A8D4F0 0%, #3A7EC8 50%, #1A5C96 100%); }
+    .mosaic-label { background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); border-radius: 10px; padding: 8px 14px; font-size: 0.8rem; font-weight: 600; color: var(--text-dark); }
+    .mosaic-icon { font-size: 2.5rem; position: absolute; top: 20px; left: 20px; }
+
+    /* ── SCIENCE ── */
+    .science-section { background: var(--white); }
+    .science-inner { display: grid; grid-template-columns: 1.15fr 1fr; gap: 80px; align-items: start; }
+    .study-card { border: 1px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 16px; background: #fff; position: relative; overflow: hidden; transition: box-shadow 0.3s, transform 0.3s; }
+    .study-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+    .study-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .sa-orange { background: linear-gradient(90deg, var(--orange), var(--orange-light)); }
+    .sa-blue { background: linear-gradient(90deg, var(--cerulean), var(--cerulean-light)); }
+    .sa-ocean { background: linear-gradient(90deg, var(--ocean), var(--cerulean)); }
+    .study-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; margin-bottom: 12px; }
+    .st-orange { background: var(--orange-pale); color: var(--orange); }
+    .st-blue { background: var(--cerulean-pale); color: var(--cerulean); }
+    .st-ocean { background: #dceef8; color: var(--ocean); }
+    .study-title { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+    .study-body { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; }
+    .study-stat { display: flex; align-items: baseline; gap: 10px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .stat-big { font-family: 'Fraunces', serif; font-size: 2.4rem; font-weight: 700; }
+    .sb-orange { color: var(--orange); } .sb-blue { color: var(--cerulean); } .sb-ocean { color: var(--ocean); }
+    .stat-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.55; }
+
+    /* Macula explainer box */
+    .macula-box { background: var(--cream); border: 1px solid var(--border-orange); border-radius: 24px; padding: 36px; position: sticky; top: 90px; }
+    .macula-eye { width: 130px; height: 130px; margin: 0 auto 24px; position: relative; }
+    .eye-shape { width: 100%; height: 100%; border-radius: 50% 0 50% 0; transform: rotate(45deg); background: linear-gradient(135deg, #d4e8f8, #6aa3dc); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(58,126,200,0.22); overflow: hidden; }
+    .eye-pupil { width: 48px; height: 48px; background: radial-gradient(circle at 35% 35%, #555, #111); border-radius: 50%; position: relative; z-index: 2; }
+    .eye-pupil::after { content: ''; position: absolute; top: 12%; left: 15%; width: 28%; height: 28%; background: rgba(255,255,255,0.7); border-radius: 50%; }
+    .m-ring { position: absolute; border-radius: 50%; border: 1.5px solid; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: pulse-out 3s ease-in-out infinite; }
+    .mr-1 { width: 64px; height: 64px; border-color: rgba(232,118,58,0.35); }
+    .mr-2 { width: 94px; height: 94px; border-color: rgba(232,118,58,0.15); animation-delay: 0.6s; }
+    @keyframes pulse-out { 0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)} }
+    .macula-box h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; text-align: center; margin-bottom: 10px; }
+    .macula-box p { font-size: 0.85rem; color: var(--text-mid); text-align: center; line-height: 1.75; margin-bottom: 22px; }
+    .wavelength-bar { background: linear-gradient(90deg, #6600aa, #3a7ec8, #00aa44, #f5c832, #e8763a, #cc2222); border-radius: 100px; height: 10px; margin-bottom: 6px; position: relative; }
+    .wl-marker { position: absolute; top: -6px; width: 2px; height: 22px; background: var(--orange); left: 35%; }
+    .wl-marker::after { content: '↑ Zeeno filters here'; position: absolute; top: 24px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 0.68rem; color: var(--orange); font-weight: 600; }
+    .wl-labels { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--text-light); margin-top: 30px; }
+    .dose-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+    .dose-box { border-radius: 12px; padding: 14px 10px; text-align: center; }
+    .db-orange { background: var(--orange-pale); }
+    .db-blue { background: var(--cerulean-pale); }
+    .dose-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; }
+    .dn-orange { color: var(--orange); } .dn-blue { color: var(--cerulean); }
+    .dose-label { font-size: 0.7rem; color: var(--text-light); margin-top: 2px; }
+
+    /* ── BENEFITS ── */
+    .benefits-section { background: var(--cream); }
+    .benefits-header { text-align: center; margin-bottom: 56px; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .benefit-card { background: #fff; border: 1px solid var(--border); border-radius: 24px; padding: 36px 28px; transition: all 0.3s; position: relative; overflow: hidden; }
+    .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+    .benefit-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; opacity: 0; transition: opacity 0.3s; }
+    .benefit-card:hover::after { opacity: 1; }
+    .bc-orange::after { background: var(--orange); }
+    .bc-blue::after { background: var(--cerulean); }
+    .bc-ocean::after { background: var(--ocean); }
+    .benefit-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; }
+    .bi-orange { background: var(--orange-pale); }
+    .bi-blue { background: var(--cerulean-pale); }
+    .bi-ocean { background: #dceef8; }
+    .benefit-title { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; line-height: 1.2; }
+    .benefit-body { font-size: 0.875rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
+    .benefit-proof { border-radius: 12px; padding: 14px 16px; font-size: 0.8rem; line-height: 1.6; }
+    .bp-orange { background: var(--orange-xpale); color: var(--orange); }
+    .bp-blue { background: var(--cerulean-xpale); color: var(--cerulean); }
+    .bp-ocean { background: #eef5fb; color: var(--ocean); }
+    .benefit-proof strong { font-weight: 700; }
+
+    /* ── INGREDIENTS ── */
+    .ingredients-section { background: #fff; }
+    .ingredients-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .ing-list { list-style: none; }
+    .ing-item { display: flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--border); transition: padding-left 0.2s; cursor: default; }
+    .ing-item:last-child { border-bottom: none; }
+    .ing-item:hover { padding-left: 6px; }
+    .ing-pip { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .pip-orange { background: var(--orange); } .pip-blue { background: var(--cerulean); }
+    .ing-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+    .ing-dose { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 5px; }
+    .id-orange { color: var(--orange); } .id-blue { color: var(--cerulean); }
+    .ing-desc { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; }
+    .gummy-showcase { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .gummy-main {
+      width: 190px; height: 190px;
+      background: radial-gradient(circle at 33% 27%, #fbd5a0, #e8763a, #bf4e10);
+      border-radius: 38px;
+      box-shadow: 0 24px 60px rgba(232,118,58,0.28), 0 8px 20px rgba(232,118,58,0.14), inset 0 3px 10px rgba(255,255,255,0.24);
+      position: relative;
+      animation: floatGummy 5s ease-in-out infinite;
+    }
+    @keyframes floatGummy { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-10px) rotate(2deg)} }
+    .gummy-main::before { content: ''; position: absolute; top: 16%; left: 20%; width: 35%; height: 20%; background: rgba(255,255,255,0.22); border-radius: 50%; filter: blur(5px); transform: rotate(-10deg); }
+    .gummy-facts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; width: 100%; }
+    .gummy-fact { background: var(--off-white); border: 1px solid var(--border); border-radius: 14px; padding: 14px 10px; text-align: center; }
+    .gf-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; color: var(--orange); }
+    .gf-label { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
+
+    /* ── TIMELINE ── */
+    .timeline-section { background: var(--cerulean-xpale); }
+    .timeline-header { text-align: center; margin-bottom: 64px; }
+    .timeline-header .section-body { margin: 0 auto; }
+    .timeline-track { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; position: relative; }
+    .timeline-track::before { content: ''; position: absolute; top: 52px; left: calc(16.5% + 12px); right: calc(16.5% + 12px); height: 2px; background: linear-gradient(90deg, var(--orange), var(--cerulean)); }
+    .timeline-node { background: #fff; border-radius: 24px; padding: 32px 24px; text-align: center; border: 1px solid var(--border); transition: box-shadow 0.3s; }
+    .timeline-node:hover { box-shadow: 0 12px 40px rgba(58,126,200,0.11); }
+    .tnode-dot { width: 104px; height: 104px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; position: relative; z-index: 1; }
+    .tnd-orange { background: var(--orange-pale); color: var(--orange); border: 2px solid var(--border-orange); }
+    .tnd-blue { background: var(--cerulean-pale); color: var(--cerulean); border: 2px solid var(--border-blue); }
+    .tnd-ocean { background: #dceef8; color: var(--ocean); border: 2px solid rgba(26,92,150,0.2); }
+    .timeline-period { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px; }
+    .tp-orange{color:var(--orange)} .tp-blue{color:var(--cerulean)} .tp-ocean{color:var(--ocean)}
+    .timeline-node-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; }
+    .timeline-bullets { list-style: none; text-align: left; margin-top: 14px; }
+    .timeline-bullets li { font-size: 0.82rem; color: var(--text-mid); padding: 5px 0; display: flex; gap: 8px; }
+    .timeline-bullets li::before { content: '→'; flex-shrink: 0; }
+    .tbl-orange li::before{color:var(--orange)} .tbl-blue li::before{color:var(--cerulean)} .tbl-ocean li::before{color:var(--ocean)}
+
+    /* ── COMPARISON ── */
+    .comparison-section { background: #fff; }
+    .comparison-inner { max-width: 780px; margin: 0 auto; }
+    .comparison-header { text-align: center; margin-bottom: 48px; }
+    .comp-table { border-radius: 24px; overflow: hidden; border: 1px solid var(--border); }
+    .comp-head { display: grid; grid-template-columns: 2fr 1fr 1fr; background: var(--off-white); padding: 16px 28px; border-bottom: 1px solid var(--border); }
+    .ch-lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .ch-lbl.zeeno{color:var(--orange)} .ch-lbl.glasses{color:var(--text-light)}
+    .comp-row { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 15px 28px; border-bottom: 1px solid var(--border); align-items: center; }
+    .comp-row:last-child{border-bottom:none}
+    .comp-row:nth-child(even){background:var(--off-white)}
+    .comp-feature{font-size:0.875rem;color:var(--text-mid)}
+    .comp-check{text-align:center;font-size:1rem;font-weight:700}
+    .comp-check.yes{color:var(--orange)} .comp-check.no{color:var(--border)}
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--off-white); }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .tc { background: #fff; border-radius: 20px; padding: 30px; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
+    .tc:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.06); }
+    .tc-stars{color:var(--orange);font-size:0.85rem;margin-bottom:14px;letter-spacing:2px}
+    .tc-quote{font-size:0.9rem;color:var(--text-mid);line-height:1.75;margin-bottom:18px;font-style:italic}
+    .tc-author{font-weight:600;font-size:0.85rem;color:var(--text-dark)}
+    .tc-role{font-size:0.78rem;color:var(--text-light);margin-top:2px}
+
+    /* ── FAQ ── */
+    .faq-section { background: #fff; }
+    .faq-inner { max-width: 700px; margin: 0 auto; }
+    .faq-header { text-align: center; margin-bottom: 52px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width:100%; background:none; border:none; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.95rem; font-weight:500; color:var(--text-dark); text-align:left; padding:22px 0; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:12px; transition:color 0.2s; }
+    .faq-q:hover{color:var(--orange)}
+    .faq-icon{color:var(--orange);font-size:1.2rem;transition:transform 0.3s;flex-shrink:0}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-a{font-size:0.875rem;color:var(--text-mid);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding-bottom 0.3s}
+    .faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 65%, #f5b87a 100%);
+      padding: 100px 56px; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before { content:''; position:absolute; top:-100px; right:-100px; width:400px; height:400px; background:rgba(255,255,255,0.1); border-radius:50%; }
+    .cta-section::after { content:''; position:absolute; bottom:-80px; left:-80px; width:300px; height:300px; background:rgba(255,255,255,0.07); border-radius:50%; }
+    .cta-section .section-title{color:#fff;max-width:600px;margin:0 auto 18px}
+    .cta-section .section-body{color:rgba(255,255,255,0.85);margin:0 auto 40px}
+    .btn-white { background:#fff; color:var(--orange); padding:17px 44px; border-radius:100px; text-decoration:none; font-weight:700; font-size:1.05rem; transition:all 0.25s; box-shadow:0 4px 20px rgba(0,0,0,0.1); display:inline-block; position:relative; z-index:2; }
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,0,0,0.16)}
+    .cta-guarantee{margin-top:18px;font-size:0.8rem;color:rgba(255,255,255,0.75);position:relative;z-index:2}
+
+    /* ── FOOTER ── */
+    footer { background: var(--text-dark); padding: 64px 56px 40px; }
+    .footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+    .footer-logo{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--orange);margin-bottom:12px;display:block}
+    .footer-brand p{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.7;max-width:240px}
+    .footer-col h4{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:16px;font-weight:700}
+    .footer-col ul{list-style:none}
+    .footer-col li{margin-bottom:10px}
+    .footer-col a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.875rem;transition:color 0.2s}
+    .footer-col a:hover{color:var(--orange-light)}
+    .footer-bottom{max-width:1200px;margin:0 auto;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+    .footer-disclaimer{font-size:0.73rem;color:rgba(255,255,255,0.28);max-width:580px;line-height:1.7}
+    .footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.28)}
+
+    /* ── FADE IN ── */
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease}
+    .fade-in.visible{opacity:1;transform:none}
+
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--orange); }
+    .nav-mobile-menu .mob-cta {
+      margin-top: 12px;
+      background: var(--orange);
+      color: #fff;
+      text-align: center;
+      padding: 14px;
+      border-radius: 100px;
+      font-weight: 600;
+      border-bottom: none;
+    }
+
+    /* ── TABLET (641px to 1024px) ── */
+    @media (min-width: 641px) and (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: 0.8rem; }
+
+      section { padding: 80px 32px; }
+      .hero { padding: 72px 32px 40px; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .hero h1 { font-size: clamp(2.4rem, 4.5vw, 3.5rem); }
+      .hero-sub { font-size: 0.95rem; }
+      .gummy-stage { width: 280px; height: 360px; }
+      .gummy-big { width: 170px; height: 170px; border-radius: 36px; }
+      .float-card { padding: 10px 14px; font-size: 0.75rem; }
+      .fc-val { font-size: 0.95rem; }
+
+      .stats-bar { padding: 20px 32px; gap: 0; }
+      .stat-item { padding: 0 24px; }
+      .stat-num { font-size: 1.7rem; }
+      .stat-label { font-size: 0.7rem; }
+
+      .pain-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .mosaic-card.tall { min-height: 260px; }
+
+      .science-inner { grid-template-columns: 1fr; gap: 40px; }
+      .macula-box { position: static; }
+
+      .benefits-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .benefit-card:last-child { grid-column: span 2; max-width: 480px; margin: 0 auto; width: 100%; }
+
+      .ingredients-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .gummy-main { width: 150px; height: 150px; }
+
+      .timeline-track { grid-template-columns: 1fr; gap: 16px; }
+      .timeline-track::before { display: none; }
+      .timeline-node { display: grid; grid-template-columns: auto 1fr; gap: 0 24px; text-align: left; padding: 24px; }
+      .tnode-dot { width: 72px; height: 72px; font-size: 1.1rem; margin: 0; grid-row: span 3; align-self: start; }
+      .timeline-period { padding-top: 4px; }
+
+      .comparison-inner { max-width: 100%; }
+
+      .testimonials-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .tc:last-child { grid-column: span 2; max-width: 480px; margin: 0 auto; width: 100%; }
+
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+      footer { padding: 48px 32px 32px; }
+    }
+
+    /* ── MOBILE (max 640px) ── */
+    @media (max-width: 640px) {
+      .announcement { font-size: 0.72rem; padding: 8px 12px; }
+
+      nav { padding: 0 20px; height: 60px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile-menu { top: 60px; }
+
+      section { padding: 64px 20px; }
+
+      .hero { padding: 56px 20px 48px; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 0; }
+      .hero-visual { display: none; }
+      .hero-badge { font-size: 0.65rem; padding: 5px 12px; margin-bottom: 20px; }
+      .hero h1 { font-size: clamp(2.4rem, 10vw, 3.2rem); margin-bottom: 18px; }
+      .hero-sub { font-size: 0.95rem; margin-bottom: 28px; }
+      .hero-cta-row { flex-direction: column; align-items: stretch; gap: 14px; margin-bottom: 28px; }
+      .btn-primary { text-align: center; padding: 15px 28px; }
+      .hero-trust { gap: 12px; }
+      .trust-item { font-size: 0.75rem; }
+
+      .stats-bar { padding: 0; flex-direction: column; }
+      .stat-item { padding: 18px 20px; max-width: 100%; border-bottom: 1px solid rgba(255,255,255,0.2); }
+      .stat-item+.stat-item::before { display: none; }
+      .stat-item:last-child { border-bottom: none; }
+      .stat-num { font-size: 2rem; }
+
+      .pain-inner { grid-template-columns: 1fr; gap: 36px; }
+      .beauty-mosaic { grid-template-columns: 1fr 1fr; }
+      .mosaic-card.tall { min-height: 200px; }
+      .mosaic-card { min-height: 120px; }
+      .mosaic-icon { font-size: 1.8rem; top: 14px; left: 14px; }
+      .mosaic-label { font-size: 0.72rem; padding: 6px 10px; }
+
+      .section-title { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+
+      .science-inner { grid-template-columns: 1fr; gap: 32px; }
+      .macula-box { position: static; padding: 24px; }
+      .macula-eye { width: 100px; height: 100px; }
+      .study-card { padding: 20px; }
+      .stat-big { font-size: 2rem; }
+
+      .benefits-grid { grid-template-columns: 1fr; gap: 14px; }
+      .benefit-card { padding: 28px 22px; }
+
+      .ingredients-inner { grid-template-columns: 1fr; gap: 36px; }
+      .gummy-showcase { gap: 20px; }
+      .gummy-main { width: 140px; height: 140px; border-radius: 30px; }
+
+      .timeline-track { grid-template-columns: 1fr; gap: 14px; }
+      .timeline-track::before { display: none; }
+      .timeline-node { display: grid; grid-template-columns: auto 1fr; gap: 0 18px; text-align: left; padding: 20px; }
+      .tnode-dot { width: 60px; height: 60px; font-size: 1rem; margin: 0; grid-row: span 3; align-self: start; }
+      .timeline-period { padding-top: 2px; }
+      .timeline-node-title { font-size: 1rem; }
+      .timeline-bullets li { font-size: 0.78rem; }
+
+      .comparison-inner { max-width: 100%; }
+      .comp-head, .comp-row { padding: 12px 16px; }
+      .comp-feature { font-size: 0.8rem; }
+
+      .testimonials-grid { grid-template-columns: 1fr; gap: 14px; }
+      .tc { padding: 22px; }
+
+      .faq-inner { max-width: 100%; }
+      .faq-q { font-size: 0.9rem; padding: 18px 0; }
+
+      .cta-section { padding: 72px 20px; }
+      .btn-white { padding: 15px 32px; font-size: 0.95rem; }
+
+      footer { padding: 48px 20px 32px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 32px; }
+      .footer-brand { grid-column: span 2; }
+      .footer-brand p { max-width: 100%; }
+      .footer-bottom { flex-direction: column; gap: 12px; }
+    }
+
+    /* ── VERY SMALL (max 380px) ── */
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 2rem; }
+      .beauty-mosaic { grid-template-columns: 1fr; }
+      .mosaic-card.tall { min-height: 160px; grid-row: span 1; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">🌟 Free Shipping on all orders over $60 · 30-Day Guarantee</div>
+
+  <nav>
+    <a href="#" class="nav-logo">Zeeno</a>
+    <ul class="nav-links">
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#science">Science</a></li>
+      <li><a href="#ingredients">Ingredients</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#shop" class="nav-cta">Shop Zeeno</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#benefits" onclick="closeMenu()">Benefits</a>
+    <a href="#science" onclick="closeMenu()">Science</a>
+    <a href="#ingredients" onclick="closeMenu()">Ingredients</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#shop" class="mob-cta" onclick="closeMenu()">Shop Zeeno</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><div class="badge-dot"></div>Clinically Studied · Lutemax® 2020</div>
+        <h1>See Clearly.<br /><em>Live Brightly.</em></h1>
+        <p class="hero-sub">Because the world is too beautiful to see it through tired, strained eyes. Zeeno is your daily gummy for eyes that stay sharp, comfortable, and ready for everything life puts in front of them.</p>
+        <div class="hero-cta-row">
+          <a href="#shop" class="btn-primary">Shop Zeeno</a>
+          <a href="#science" class="btn-ghost">How It Works</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">30-Day Guarantee</div>
+          <div class="trust-item">Free Shipping Over $60</div>
+          <div class="trust-item">Human Clinical Trials</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="gummy-stage">
+          <div class="float-card card-1"><div class="fc-label">Glare Recovery</div><div class="fc-val">~17% better</div></div>
+          <div class="float-card card-2"><div class="fc-label">Tear Film</div><div class="fc-val">~29% longer</div></div>
+          <div class="float-card card-3"><div class="fc-label">Daily dose</div><div class="fc-val">10mg Lutein</div></div>
+          <div class="gummy-big"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">5,000+</div><div class="stat-label">Daily Users</div></div>
+    <div class="stat-item"><div class="stat-num">~29%</div><div class="stat-label">Tear Film Improvement (6-mo study)</div></div>
+    <div class="stat-item"><div class="stat-num">~17%</div><div class="stat-label">Glare Recovery Improvement (1-yr study)</div></div>
+    <div class="stat-item"><div class="stat-num">6–12mo</div><div class="stat-label">For Full Measurable Benefit</div></div>
+  </div>
+
+  <!-- PAIN -->
+  <section class="pain-section">
+    <div class="max-w">
+      <div class="pain-inner">
+        <div>
+          <h2 class="section-title fade-in">Good eyesight lets you see the <em>beautiful things.</em></h2>
+          <p class="section-body fade-in">Modern screen life asks a lot from your macula—the part of your eye responsible for sharp, central vision. When it's under-nourished, the world looks a little dimmer. A little harsher.</p>
+          <ul class="pain-list">
+            <li class="pain-item fade-in"><div class="pain-icon-wrap">🌙</div><div class="pain-text"><strong>Night drives feel stressful</strong> — headlights are harsher and take longer to recover from.</div></li>
+            <li class="pain-item fade-in"><div class="pain-icon-wrap">💻</div><div class="pain-text"><strong>Screens drain you</strong> — eyes feel dry, tired, or heavy by mid-afternoon.</div></li>
+            <li class="pain-item fade-in"><div class="pain-icon-wrap">☀️</div><div class="pain-text"><strong>Sun glare lingers</strong> — bright light throws you off longer than it should.</div></li>
+            <li class="pain-item fade-in"><div class="pain-icon-wrap">📖</div><div class="pain-text"><strong>Text feels less crisp</strong> — reading and detail work get harder as the day goes on.</div></li>
+          </ul>
+        </div>
+        <div class="beauty-mosaic fade-in">
+          <div class="mosaic-card sunrise tall"><div class="mosaic-icon">🌅</div><div class="mosaic-label">Golden-hour sunsets</div></div>
+          <div class="mosaic-card sky"><div class="mosaic-icon">☁️</div><div class="mosaic-label">Blue sky days</div></div>
+          <div class="mosaic-card ocean"><div class="mosaic-icon">🌊</div><div class="mosaic-label">Ocean horizons</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCIENCE -->
+  <section id="science" class="science-section">
+    <div class="max-w">
+      <div class="science-inner">
+        <div>
+          <div class="section-label fade-in">The Science</div>
+          <h2 class="section-title fade-in">Your eyes have <span class="blue">built-in sunglasses.</span></h2>
+          <p class="section-body fade-in" style="margin-bottom:36px;">Macular pigment—made from lutein + zeaxanthin—sits in the center of your retina. It absorbs blue light (400–500 nm, peak ~460 nm), acting like a natural yellow filter. Most adults don't get enough from diet alone to keep pace with modern screen habits.</p>
+          <p class="section-body fade-in">Zeeno delivers the exact clinically studied dose: <strong style="color:var(--text-dark);">10 mg lutein + 2 mg zeaxanthin isomers daily.</strong></p>
+
+          <div style="margin-top:40px">
+            <div class="study-card fade-in">
+              <div class="study-accent sa-orange"></div>
+              <div class="study-tag st-orange">📄 1-Year Placebo-Controlled Study</div>
+              <div class="study-title">Glare Recovery (Night Driving)</div>
+              <div class="study-body">A double-blind RCT at 10 mg lutein + 2 mg zeaxanthin/day found measurable improvements in photostress recovery—how fast your eyes reset after a bright flash of light.</div>
+              <div class="study-stat">
+                <div class="stat-big sb-orange">~17%</div>
+                <div class="stat-desc">Average improvement in recovery time<br />vs placebo over 12 months</div>
+              </div>
+            </div>
+            <div class="study-card fade-in">
+              <div class="study-accent sa-blue"></div>
+              <div class="study-tag st-blue">📄 6-Month RCT · Screen Users (&gt;6 hrs/day)</div>
+              <div class="study-title">Eyes That Stay Comfortable All Day</div>
+              <div class="study-body">In heavy screen users, the clinically studied dose improved objective tear film stability—the moisture layer that keeps vision clear and eyes comfortable.</div>
+              <div class="study-stat">
+                <div class="stat-big sb-blue">~29%</div>
+                <div class="stat-desc">Longer tear film stability (TBUT)<br />25.5 → 33.0 seconds</div>
+              </div>
+            </div>
+            <div class="study-card fade-in">
+              <div class="study-accent sa-ocean"></div>
+              <div class="study-tag st-ocean">📊 46-Study Meta-Analysis</div>
+              <div class="study-title">Stronger Eye Defense, Month by Month</div>
+              <div class="study-body">A large systematic review confirmed that consistent daily lutein + zeaxanthin increases macular pigment optical density (MPOD) over 3–12 months at this dose range.</div>
+              <div class="study-stat">
+                <div class="stat-big sb-ocean">~13%</div>
+                <div class="stat-desc">Increase in macular pigment density<br />at 5–20 mg/day over 3–12 months</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in">
+          <div class="macula-box">
+            <div class="macula-eye">
+              <div class="eye-shape"><div class="eye-pupil"></div></div>
+              <div class="m-ring mr-1"></div>
+              <div class="m-ring mr-2"></div>
+            </div>
+            <h3>Your Macular Pigment</h3>
+            <p>Lutein and zeaxanthin concentrate in your macula at over 1,000× blood levels—making macular pigment your eye's most potent internal defense against high-energy light.</p>
+            <div>
+              <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:10px;">Blue light spectrum absorbed</div>
+              <div class="wavelength-bar"><div class="wl-marker"></div></div>
+              <div class="wl-labels"><span>380nm</span><span>460nm (peak)</span><span>700nm</span></div>
+            </div>
+            <div style="margin-top:32px;padding-top:22px;border-top:1px solid var(--border-orange)">
+              <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:12px">Lutemax® 2020 Daily Dose</div>
+              <div class="dose-row">
+                <div class="dose-box db-orange"><div class="dose-num dn-orange">10mg</div><div class="dose-label">Lutein</div></div>
+                <div class="dose-box db-blue"><div class="dose-num dn-blue">2mg</div><div class="dose-label">Zeaxanthin Isomers</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits" class="benefits-section">
+    <div class="max-w">
+      <div class="benefits-header">
+        <div class="section-label fade-in">What Zeeno Supports</div>
+        <h2 class="section-title fade-in">Three ways to <em>brighter</em> days.</h2>
+        <p class="section-body fade-in" style="margin:0 auto">From morning screens to evening drives and everything in between.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card bc-ocean fade-in">
+          <div class="benefit-icon bi-ocean">💧</div>
+          <div class="benefit-title">Dry, Tired Eyes by 3pm?</div>
+          <div class="benefit-body">If your eyes feel heavy, gritty, or strained after long hours on screens, Zeeno helps support the moisture layer that keeps eyes comfortable and vision clear all day long.</div>
+          <div class="benefit-proof bp-ocean">6-month RCT: <strong>~29% improvement in eye moisture retention</strong> and ~10% more natural tear production in screen users.</div>
+        </div>
+        <div class="benefit-card bc-blue fade-in">
+          <div class="benefit-icon bi-blue">💡</div>
+          <div class="benefit-title">Bounce Back Faster from Glare</div>
+          <div class="benefit-body">Headlights. Sun through the clouds. A bright phone in a dark room. Zeeno supports faster visual recovery so you spend less time in that washed-out haze.</div>
+          <div class="benefit-proof bp-blue">1-year trial: <strong>~17% improvement in glare recovery</strong>, nearly a 9-second improvement vs placebo.</div>
+        </div>
+        <div class="benefit-card bc-orange fade-in">
+          <div class="benefit-icon bi-orange">🔵</div>
+          <div class="benefit-title">Your Eyes' Built-In Blue-Light Shield</div>
+          <div class="benefit-body">Your eyes naturally filter harsh blue light—but only if they have the right nutrients to do it. Zeeno helps you build and maintain that internal shield with a clinically studied daily dose.</div>
+          <div class="benefit-proof bp-orange">~13% increase in your eye's natural blue-light filtering pigment density, measured over 3–12 months.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS -->
+  <section id="ingredients" class="ingredients-section">
+    <div class="max-w">
+      <div class="ingredients-inner">
+        <div>
+          <div class="section-label fade-in">What's Inside</div>
+          <h2 class="section-title fade-in">A complete eye-nutrition <em>gummy.</em></h2>
+          <ul class="ing-list">
+            <li class="ing-item fade-in"><div class="ing-pip pip-orange"></div><div><div class="ing-name">Lutemax® 2020</div><div class="ing-dose id-orange">10 mg Lutein + 2 mg Zeaxanthin Isomers</div><div class="ing-desc">The exact dose from placebo-controlled human trials. Your eyes concentrate these nutrients in the macula at over 1,000× blood levels—daily intake matters.</div></div></li>
+            <li class="ing-item fade-in"><div class="ing-pip pip-orange"></div><div><div class="ing-name">Vitamin A</div><div class="ing-dose id-orange">900 mcg</div><div class="ing-desc">A key component of rhodopsin, the retina's light-sensing protein. Essential for normal vision from the first light of morning.</div></div></li>
+            <li class="ing-item fade-in"><div class="ing-pip pip-blue"></div><div><div class="ing-name">Vitamins C + E</div><div class="ing-dose id-blue">150 mg + 20 mg</div><div class="ing-desc">Antioxidants that help protect cells from free-radical damage—described by NIH as foundational for cellular protection.</div></div></li>
+            <li class="ing-item fade-in"><div class="ing-pip pip-blue"></div><div><div class="ing-name">Zinc</div><div class="ing-dose id-blue">10 mg</div><div class="ing-desc">An essential mineral found throughout eye tissue, supporting normal retinal function.</div></div></li>
+            <li class="ing-item fade-in"><div class="ing-pip pip-orange"></div><div><div class="ing-name">Bilberry + Grape Seed Extract</div><div class="ing-dose id-orange">Plant-based blend</div><div class="ing-desc">Plant-source antioxidants supporting eye tissues and low-light visual performance.</div></div></li>
+          </ul>
+        </div>
+        <div class="gummy-showcase fade-in">
+          <div class="gummy-main"></div>
+          <div style="text-align:center">
+            <div style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;margin-bottom:4px">Natural Berry Flavor</div>
+            <div style="font-size:0.85rem;color:var(--text-light)">From real blueberry extract. One gummy daily.</div>
+          </div>
+          <div class="gummy-facts">
+            <div class="gummy-fact"><div class="gf-num">30</div><div class="gf-label">Day supply</div></div>
+            <div class="gummy-fact"><div class="gf-num">$2</div><div class="gf-label">Per day</div></div>
+            <div class="gummy-fact"><div class="gf-num">1</div><div class="gf-label">Gummy daily</div></div>
+          </div>
+          <div style="background:var(--cerulean-xpale);border:1px solid var(--border-blue);border-radius:16px;padding:20px;text-align:center;width:100%">
+            <div style="font-size:0.78rem;color:var(--cerulean);font-weight:600;margin-bottom:4px">Who it's for</div>
+            <div style="font-size:0.85rem;color:var(--text-mid)">Screen workers · Students · Parents · Gamers · Creators. Safe for kids.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <div class="max-w">
+      <div class="timeline-header">
+        <div class="section-label fade-in">What to Expect</div>
+        <h2 class="section-title fade-in">Your eyes get <span class="blue">better with every day.</span></h2>
+        <p class="section-body fade-in">Most people notice their eyes feeling more comfortable first. The longer you take Zeeno, the stronger your eyes' natural defenses become—backed by clinical studies running up to 12 months.</p>
+      </div>
+      <div class="timeline-track">
+        <div class="timeline-node fade-in">
+          <div class="tnode-dot tnd-orange">3mo</div>
+          <div class="timeline-period tp-orange">Months 1–3</div>
+          <div class="timeline-node-title">First Comfort Shifts</div>
+          <ul class="timeline-bullets tbl-orange">
+            <li>Eyes feel less tired after long screen days</li>
+            <li>Serum lutein/zeaxanthin levels rise</li>
+            <li>Brightness may feel more manageable</li>
+          </ul>
+        </div>
+        <div class="timeline-node fade-in">
+          <div class="tnode-dot tnd-blue">6mo</div>
+          <div class="timeline-period tp-blue">Months 4–6</div>
+          <div class="timeline-node-title">Objective Improvements</div>
+          <ul class="timeline-bullets tbl-blue">
+            <li>Tear film stability improved in studies</li>
+            <li>Glare recovery times measurably better</li>
+            <li>Visual comfort more predictable day-to-day</li>
+          </ul>
+        </div>
+        <div class="timeline-node fade-in">
+          <div class="tnode-dot tnd-ocean">12mo</div>
+          <div class="timeline-period tp-ocean">Month 6+</div>
+          <div class="timeline-node-title">Long-Term Support</div>
+          <ul class="timeline-bullets tbl-ocean">
+            <li>Macular pigment levels sustained with daily use</li>
+            <li>~17% glare recovery improvement in 1-year trial</li>
+            <li>Screen-heavy days feel easier to sustain</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="comparison-section">
+    <div class="comparison-inner">
+      <div class="comparison-header">
+        <div class="section-label fade-in">Zeeno vs Blue Light Glasses</div>
+        <h2 class="section-title fade-in">External filter vs. <em>internal defense.</em></h2>
+        <p class="section-body fade-in" style="margin:0 auto;text-align:center">Glasses filter light while you wear them. Zeeno supports macular pigment—your built-in filter—over time. Many people use both.</p>
+      </div>
+      <div class="comp-table fade-in">
+        <div class="comp-head">
+          <div class="ch-lbl">Feature</div>
+          <div class="ch-lbl zeeno" style="text-align:center">Zeeno</div>
+          <div class="ch-lbl glasses" style="text-align:center">Blue Light Glasses</div>
+        </div>
+        <div class="comp-row"><div class="comp-feature">Works without wearing anything</div><div class="comp-check yes">✓</div><div class="comp-check no">—</div></div>
+        <div class="comp-row"><div class="comp-feature">Supports eyes beyond screen time</div><div class="comp-check yes">✓</div><div class="comp-check no">—</div></div>
+        <div class="comp-row"><div class="comp-feature">Helps with oxidative stress + dry eyes</div><div class="comp-check yes">✓</div><div class="comp-check no">—</div></div>
+        <div class="comp-row"><div class="comp-feature">No face pressure or headaches</div><div class="comp-check yes">✓</div><div class="comp-check no">—</div></div>
+        <div class="comp-row"><div class="comp-feature">Filters light while using screens</div><div class="comp-check no">—</div><div class="comp-check" style="color:var(--cerulean);text-align:center;font-weight:700">✓</div></div>
+        <div class="comp-row"><div class="comp-feature">Clinically studied in human trials</div><div class="comp-check yes">✓</div><div class="comp-check no">—</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="max-w">
+      <div class="testimonials-header">
+        <div class="section-label fade-in">Reviews</div>
+        <h2 class="section-title fade-in">Trusted by people who <em>live on screens.</em></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="tc fade-in"><div class="tc-stars">★★★★★</div><div class="tc-quote">"As a designer, my screen time is basically my entire day. Zeeno has made a noticeable difference in how my eyes feel at the end of the day."</div><div class="tc-author">Maya L.</div><div class="tc-role">UX Designer</div></div>
+        <div class="tc fade-in"><div class="tc-stars">★★★★★</div><div class="tc-quote">"I'm a parent working from home. Between work and helping kids online, Zeeno has been a game-changer for my eye comfort."</div><div class="tc-author">Jamie R.</div><div class="tc-role">Marketing Manager</div></div>
+        <div class="tc fade-in"><div class="tc-stars">★★★★★</div><div class="tc-quote">"I used to get headaches after 8+ hours on my laptop. Since taking Zeeno, my eyes feel less strained and I take far fewer breaks."</div><div class="tc-author">Alex S.</div><div class="tc-role">Software Developer</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <div class="section-label fade-in">FAQ</div>
+        <h2 class="section-title fade-in">Common <em>questions.</em></h2>
+      </div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Will this replace my glasses? <span class="faq-icon">+</span></button><div class="faq-a">No—Zeeno supports eye nutrition and visual performance, but it doesn't change your prescription. It works alongside your current eyewear.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">How long until I notice a difference? <span class="faq-icon">+</span></button><div class="faq-a">In clinical studies, blood levels of lutein/zeaxanthin rose by around 3 months, and measurable objective eye test improvements appeared over 6–12 months. Comfort changes are often noticed first.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Is it safe for daily use? <span class="faq-icon">+</span></button><div class="faq-a">In a 6-month placebo-controlled trial in heavy screen users, this dose was well-tolerated with no serious adverse reactions reported. Consult your healthcare provider if pregnant or nursing.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Can I take this with a multivitamin? <span class="faq-icon">+</span></button><div class="faq-a">Yes, generally. If your multivitamin contains vitamins A, C, E, or zinc, be mindful of total daily intake. Consult your healthcare provider if you have specific questions.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Why lutein and zeaxanthin specifically? <span class="faq-icon">+</span></button><div class="faq-a">They're the only dietary carotenoids that concentrate in the macula at over 1,000× blood levels. They form macular pigment—your eye's built-in blue-light filter and the most studied nutrients for visual performance in the digital age.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Is Zeeno safe for kids? <span class="faq-icon">+</span></button><div class="faq-a">Zeeno is formulated with well-studied ingredients. We recommend consulting your child's pediatrician before starting any supplement routine.</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="shop">
+    <div class="section-label fade-in" style="color:rgba(255,255,255,0.75)">Start Today</div>
+    <h2 class="section-title fade-in">Redefine your <em style="color:rgba(255,255,255,0.9)">vision routine.</em></h2>
+    <p class="section-body fade-in" style="color:rgba(255,255,255,0.85);margin:0 auto 40px">Your eyes work hard—your wellness routine should too. Try Zeeno for 90 days. If you don't see the difference, we'll refund you for unopened bottles.</p>
+    <a href="#" class="btn-white fade-in">Shop Zeeno</a>
+    <div class="cta-guarantee fade-in">🔒 30-Day Satisfaction Guarantee · Free Shipping Over $60</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Zeeno</span>
+        <p>Daily eye nutrition for the people you love. Clinically studied lutein + zeaxanthin for screen-day comfort and visual performance.</p>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="#">Zeeno Gummies</a></li><li><a href="#">Subscribe &amp; Save</a></li><li><a href="#">Bundles</a></li></ul></div>
+      <div class="footer-col"><h4>Learn</h4><ul><li><a href="#">How It Works</a></li><li><a href="#">The Science</a></li><li><a href="#">FAQ</a></li><li><a href="#">About Zeeno</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Instagram</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</div>
+      <div class="footer-copy">© 2026 Zeeno</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFAQ(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function toggleMenu() {
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('mobileMenu');
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    }
+
+    function closeMenu() {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
