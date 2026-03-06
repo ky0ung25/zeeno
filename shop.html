@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeeno Eye Gummies – Daily Vision Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --white:#fff; --off-white:#fdf9f5; --cream:#fef5ea;
+      --orange:#E8763A; --orange-light:#F5A265; --orange-pale:#FDE8D4; --orange-xpale:#FEF4EC;
+      --cerulean:#3A7EC8; --cerulean-light:#6AA3DC; --cerulean-pale:#D4E8F8; --cerulean-xpale:#EEF5FC;
+      --ocean:#1A5C96; --text-dark:#1a1a2e; --text-mid:#4a4a6a; --text-light:#8888aa;
+      --border:#e8e8f0; --bord-o:rgba(232,118,58,.2); --bord-b:rgba(58,126,200,.2);
+      --green:#2a9d72; --green-pale:#e6f7f1;
+    }
+    *{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth}
+    body{background:#fff;color:var(--text-dark);font-family:'Plus Jakarta Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
+
+    /* ── ANNOUNCEMENT ── */
+    .ann{background:var(--text-dark);color:#fff;text-align:center;padding:9px 16px;font-size:.77rem;font-weight:500;letter-spacing:.06em}
+    .ann strong{color:var(--orange-light)}
+
+    /* ── NAV ── */
+    nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px}
+    .nav-logo{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:700;color:var(--orange);text-decoration:none;letter-spacing:-.02em}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{color:var(--text-mid);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--orange)}
+    .nav-r{display:flex;align-items:center;gap:12px}
+    .btn-nav-cart{background:var(--orange);color:#fff;padding:10px 22px;border-radius:100px;text-decoration:none;font-size:.84rem;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .2s;box-shadow:0 2px 12px rgba(232,118,58,.28)}
+    .btn-nav-cart:hover{background:var(--orange-light);transform:translateY(-1px)}
+    .cart-bubble{background:var(--text-dark);color:#fff;width:18px;height:18px;border-radius:50%;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+    .nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-ham span{display:block;width:24px;height:2px;background:var(--text-dark);border-radius:2px;transition:all .3s}
+    .nav-ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-ham.open span:nth-child(2){opacity:0}
+    .nav-ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* ── BREADCRUMB ── */
+    .bc{padding:11px 56px;font-size:.74rem;color:var(--text-light);background:var(--off-white);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:5px}
+    .bc a{color:var(--text-light);text-decoration:none;transition:color .2s}
+    .bc a:hover{color:var(--orange)}
+
+    /* ── PDP GRID ── */
+    .pdp{max-width:1240px;margin:0 auto;padding:48px 56px 80px;display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:start}
+
+    /* ── GALLERY ── */
+    .gallery{position:sticky;top:82px}
+    .gal-main{border-radius:24px;background:var(--off-white);aspect-ratio:1/1;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+
+    /* hero gummy slide */
+    .slide-gummy{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}
+    .gal-bg{position:absolute;inset:0;background:radial-gradient(circle at 68% 30%,rgba(245,162,101,.35),transparent 54%),radial-gradient(circle at 20% 74%,rgba(58,126,200,.09),transparent 44%)}
+    .gummy-blob{width:260px;height:260px;background:radial-gradient(circle at 34% 27%,#fbd2a0,#e8763a 46%,#b84e14 100%);border-radius:52px;box-shadow:0 40px 90px rgba(232,118,58,.38),0 10px 28px rgba(232,118,58,.18),inset 0 4px 14px rgba(255,255,255,.28);position:relative;z-index:2;animation:blobFloat 5s ease-in-out infinite}
+    .gummy-blob::before{content:'';position:absolute;top:17%;left:20%;width:34%;height:18%;background:rgba(255,255,255,.26);border-radius:50%;filter:blur(6px);transform:rotate(-12deg)}
+    @keyframes blobFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+    .gal-badge{position:absolute;top:16px;right:16px;z-index:4;background:var(--orange);color:#fff;font-size:.63rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 12px;border-radius:100px}
+    /* float cards */
+    .fc{position:absolute;z-index:3;background:#fff;border-radius:13px;padding:9px 13px;box-shadow:0 5px 20px rgba(0,0,0,.09);white-space:nowrap}
+    .fc .fl{font-size:.61rem;color:var(--text-light);margin-bottom:1px}
+    .fc .fv{font-size:.9rem;font-weight:700}
+    .fc1{top:44px;left:16px;border:1px solid var(--cerulean-pale);animation:fcA 5s ease-in-out infinite} .fc1 .fv{color:var(--ocean)}
+    .fc2{top:148px;right:13px;border:1px solid var(--orange-pale);animation:fcB 5.5s ease-in-out infinite} .fc2 .fv{color:var(--orange)}
+    .fc3{bottom:70px;left:13px;border:1px solid var(--cerulean-pale);animation:fcA 6s ease-in-out infinite .8s} .fc3 .fv{color:var(--cerulean)}
+    @keyframes fcA{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes fcB{0%,100%{transform:translateY(-4px)}50%{transform:translateY(6px)}}
+
+    /* alt slides */
+    .slide-alt{display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;gap:18px;padding:28px;text-align:center}
+
+    /* thumb strip */
+    .thumbs{display:flex;gap:8px;margin-top:0}
+    .thumb{flex:1;aspect-ratio:1/1;border-radius:13px;background:var(--off-white);border:2px solid transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:border-color .2s;padding:6px;font-family:'Plus Jakarta Sans',sans-serif}
+    .thumb.on{border-color:var(--orange);background:var(--orange-xpale)}
+    .thumb:hover:not(.on){border-color:var(--orange-pale)}
+    .thumb .ti{font-size:1.4rem}
+    .thumb .tl{font-size:.57rem;font-weight:600;color:var(--text-mid);text-align:center;line-height:1.3}
+    .mini-gummy{width:32px;height:32px;background:radial-gradient(circle at 33% 27%,#fbd2a0,#e8763a,#b84e14);border-radius:7px}
+
+    /* ── PRODUCT COLUMN ── */
+    .prod{}
+
+    .star-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+    .stars{color:var(--orange);font-size:.82rem;letter-spacing:1.5px}
+    .rat{font-size:.82rem;font-weight:700}
+    .rct{font-size:.78rem;color:var(--text-mid)}
+    .rdiv{color:var(--border)}
+    .cust-badge{font-size:.76rem;color:var(--green);font-weight:600}
+
+    .pullquote{background:var(--orange-xpale);border-left:3px solid var(--orange);border-radius:0 12px 12px 0;padding:11px 15px;margin-bottom:19px;font-size:.83rem;font-style:italic;color:var(--text-mid);line-height:1.6}
+    .pullquote cite{display:block;font-style:normal;font-size:.71rem;color:var(--text-light);margin-top:3px;font-weight:500}
+
+    .pdp-title{font-family:'Fraunces',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:12px}
+    .pdp-title em{font-style:italic;font-weight:300;color:var(--orange)}
+    .pdp-sub{font-size:.93rem;color:var(--text-mid);line-height:1.75;margin-bottom:22px}
+
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+    .pill{display:flex;align-items:center;gap:6px;background:var(--off-white);border:1px solid var(--border);border-radius:100px;padding:5px 13px;font-size:.73rem;font-weight:600;color:var(--text-mid)}
+
+    /* ── PURCHASE BOX ── */
+    .pbox{background:var(--off-white);border:1px solid var(--border);border-radius:24px;padding:22px;margin-bottom:20px}
+
+    /* tab switcher */
+    .ptyp{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--border);border-radius:13px;overflow:hidden;margin-bottom:19px}
+    .ptab{padding:12px 8px;background:#fff;border:none;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;text-align:center;transition:background .18s;position:relative}
+    .ptab.on{background:var(--text-dark)}
+    .ptab:not(.on):hover{background:var(--off-white)}
+    .pt-title{display:block;font-size:.79rem;font-weight:700;color:var(--text-mid);transition:color .18s}
+    .ptab.on .pt-title{color:#fff}
+    .pt-sub{display:block;font-size:.66rem;margin-top:2px;color:var(--text-light);transition:color .18s}
+    .ptab.on .pt-sub{color:rgba(255,255,255,.5)}
+    .pt-sub.grn{color:var(--green)!important;font-weight:600}
+    .ptab.on .pt-sub.grn{color:#6ee9b7!important}
+
+    /* sub steps */
+    .sub-steps{background:#fff;border:1px solid var(--border);border-radius:13px;padding:14px;margin-bottom:17px;display:none;flex-direction:column}
+    .sub-steps.vis{display:flex}
+    .step{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+    .step:last-child{border-bottom:none;padding-bottom:0}
+    .step-dot{width:28px;height:28px;flex-shrink:0;background:var(--orange-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem}
+    .step-title{font-size:.77rem;font-weight:700;color:var(--text-dark);margin-bottom:1px}
+    .step-body{font-size:.71rem;color:var(--text-light);line-height:1.5}
+
+    /* sub benefit banner */
+    .sub-banner{background:var(--green-pale);border:1px solid rgba(42,157,114,.24);border-radius:11px;padding:11px 14px;margin-bottom:17px;display:none;align-items:flex-start;gap:9px}
+    .sub-banner.vis{display:flex}
+    .sb-icon{font-size:.95rem;flex-shrink:0;margin-top:1px}
+    .sb-txt{font-size:.75rem;color:var(--text-mid);line-height:1.5}
+    .sb-txt strong{color:var(--green)}
+
+    /* qty + purchase type (v2 styles injected below) */
+    .qty-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+    .qb-g{background:var(--green);color:#fff} .qb-o{background:var(--orange);color:#fff}
+
+    /* ATC button */
+    .btn-atc{width:100%;padding:17px;background:var(--orange);color:#fff;border:none;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .25s;box-shadow:0 4px 20px rgba(232,118,58,.3);display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:13px;letter-spacing:.01em}
+    .btn-atc:hover{background:var(--orange-light);transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,118,58,.4)}
+    .btn-atc.ok{background:var(--green);box-shadow:0 4px 20px rgba(42,157,114,.3);transform:none}
+
+    /* trust row */
+    .trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 20px;padding-top:13px;border-top:1px solid var(--border)}
+    .tr{display:flex;align-items:center;gap:5px;font-size:.67rem;font-weight:600;color:var(--text-mid);text-transform:uppercase;letter-spacing:.04em}
+
+    /* guarantee */
+    .guar{display:flex;gap:14px;align-items:flex-start;background:var(--cerulean-xpale);border:1px solid var(--bord-b);border-radius:15px;padding:15px 17px;margin-bottom:22px}
+    .guar-ic{font-size:1.9rem;flex-shrink:0}
+    .guar-tt{font-size:.875rem;font-weight:700;margin-bottom:3px}
+    .guar-bd{font-size:.76rem;color:var(--text-mid);line-height:1.55}
+
+    /* detail tabs */
+    .dtabs{border-top:1px solid var(--border)}
+    .dtab-nav{display:flex;border-bottom:1px solid var(--border)}
+    .dtab-btn{padding:12px 16px;background:none;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:.77rem;font-weight:600;color:var(--text-light);cursor:pointer;position:relative;transition:color .2s;white-space:nowrap}
+    .dtab-btn::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform .2s}
+    .dtab-btn.on{color:var(--text-dark)}
+    .dtab-btn.on::after{transform:scaleX(1)}
+    .dtab-btn:hover{color:var(--text-dark)}
+    .dpanel{display:none;padding:20px 0}
+    .dpanel.on{display:block}
+    .dbody{font-size:.86rem;color:var(--text-mid);line-height:1.8}
+    .dbody p{margin-bottom:12px}
+    .dbody p:last-child{margin:0}
+    .dbody strong{color:var(--text-dark);font-weight:600}
+    .chk{list-style:none;margin-top:10px}
+    .chk li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:.84rem;color:var(--text-mid)}
+    .chk li:last-child{border-bottom:none}
+    .chk li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+    .ing-tbl{width:100%;border-collapse:collapse}
+    .ing-tbl tr{border-bottom:1px solid var(--border)}
+    .ing-tbl tr:last-child{border-bottom:none}
+    .ing-tbl td{padding:11px 0;font-size:.8rem;vertical-align:top}
+    .in{font-weight:600;color:var(--text-dark);width:56%}
+    .isub{font-size:.7rem;color:var(--text-light);font-weight:300;margin-top:2px}
+    .ia{text-align:right;font-weight:700}
+    .io{color:var(--orange)} .ib{color:var(--cerulean)}
+    .ipip{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:2px;vertical-align:middle}
+    .ipo{background:var(--orange)} .ipb{background:var(--cerulean)}
+    .how-list{list-style:none}
+    .how-item{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+    .how-item:last-child{border-bottom:none}
+    .how-n{width:29px;height:29px;flex-shrink:0;background:var(--orange);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:.82rem;font-weight:700}
+    .how-t{font-size:.86rem;font-weight:600;color:var(--text-dark);margin-bottom:3px}
+    .how-b{font-size:.78rem;color:var(--text-mid);line-height:1.6}
+
+    /* ── PROOF STRIP ── */
+    .proof-strip{background:var(--text-dark);padding:18px 56px;display:flex;align-items:center;justify-content:center;gap:0;overflow-x:auto}
+    .proof-item{display:flex;align-items:center;gap:9px;color:rgba(255,255,255,.6);font-size:.78rem;font-weight:500;padding:0 32px;flex-shrink:0;position:relative}
+    .proof-item+.proof-item::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:1px;background:rgba(255,255,255,.14)}
+    .proof-num{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;color:var(--orange-light)}
+
+    /* ── BTF sections ── */
+    .btf{padding:80px 56px}
+    .btf-inner{max-width:1200px;margin:0 auto}
+    .sec-lbl{font-size:.69rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:11px;display:block}
+    .sec-ttl{font-family:'Fraunces',serif;font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:700;line-height:1.15;letter-spacing:-.025em;margin-bottom:36px;color:var(--text-dark)}
+    .sec-ttl em{font-style:italic;font-weight:300;color:var(--orange)}
+
+    /* study cards */
+    .study-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .study-card{background:var(--off-white);border:1px solid var(--border);border-radius:20px;padding:24px 20px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+    .study-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.07)}
+    .sc-bar{height:3px;position:absolute;top:0;left:0;right:0}
+    .sc-bar-o{background:linear-gradient(90deg,var(--orange),var(--orange-light))}
+    .sc-bar-b{background:linear-gradient(90deg,var(--cerulean),var(--cerulean-light))}
+    .sc-bar-c{background:linear-gradient(90deg,var(--ocean),var(--cerulean))}
+    .sc-tag{font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:100px;margin-bottom:13px;display:inline-block}
+    .sct-o{background:var(--orange-pale);color:var(--orange)}
+    .sct-b{background:var(--cerulean-pale);color:var(--cerulean)}
+    .sct-c{background:#dceef8;color:var(--ocean)}
+    .sc-title{font-family:'Fraunces',serif;font-size:1.04rem;font-weight:600;margin-bottom:8px;color:var(--text-dark)}
+    .sc-body{font-size:.79rem;color:var(--text-mid);line-height:1.7;margin-bottom:14px}
+    .sc-stat{display:flex;align-items:baseline;gap:8px;padding-top:13px;border-top:1px solid var(--border)}
+    .stat-n{font-family:'Fraunces',serif;font-size:2.1rem;font-weight:700}
+    .sn-o{color:var(--orange)} .sn-b{color:var(--cerulean)} .sn-c{color:var(--ocean)}
+    .stat-d{font-size:.71rem;color:var(--text-light);line-height:1.5}
+
+    /* reviews */
+    .rev-btf{background:var(--off-white)}
+    .rv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .rv-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:24px;transition:transform .2s,box-shadow .2s}
+    .rv-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.06)}
+    .rv-stars{color:var(--orange);font-size:.78rem;letter-spacing:1.5px;margin-bottom:11px}
+    .rv-body{font-size:.85rem;color:var(--text-mid);line-height:1.75;margin-bottom:14px;font-style:italic}
+    .rv-author{font-weight:700;font-size:.8rem}
+    .rv-role{font-size:.7rem;color:var(--text-light);margin-top:2px}
+    .rv-ver{font-size:.63rem;color:var(--green);font-weight:600;margin-top:6px;display:flex;align-items:center;gap:4px}
+
+    /* faq */
+    .faq-btf{background:#fff}
+    .faq-wrap{max-width:700px}
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-q{width:100%;background:none;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:.89rem;font-weight:600;color:var(--text-dark);text-align:left;padding:18px 0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:color .2s}
+    .faq-q:hover{color:var(--orange)}
+    .faq-ch{color:var(--orange);font-size:1rem;transition:transform .3s;flex-shrink:0}
+    .faq-item.open .faq-ch{transform:rotate(45deg)}
+    .faq-a{font-size:.855rem;color:var(--text-mid);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding-bottom .3s}
+    .faq-item.open .faq-a{max-height:260px;padding-bottom:18px}
+
+    /* cta band */
+    .cta-band{background:linear-gradient(135deg,var(--orange) 0%,var(--orange-light) 68%,#f5bb7a 100%);padding:80px 56px;text-align:center;position:relative;overflow:hidden}
+    .cta-band::before{content:'';position:absolute;top:-110px;right:-110px;width:420px;height:420px;background:rgba(255,255,255,.1);border-radius:50%}
+    .cta-band::after{content:'';position:absolute;bottom:-85px;left:-85px;width:320px;height:320px;background:rgba(255,255,255,.07);border-radius:50%}
+    .cta-inner{position:relative;z-index:2;max-width:580px;margin:0 auto}
+    .cta-lbl{font-size:.69rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:11px;display:block}
+    .cta-ttl{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:#fff;margin-bottom:14px;line-height:1.15;letter-spacing:-.025em}
+    .cta-ttl em{font-style:italic;font-weight:300}
+    .cta-p{font-size:.94rem;color:rgba(255,255,255,.85);line-height:1.75;margin-bottom:30px}
+    .btn-white{background:#fff;color:var(--orange);padding:16px 44px;border-radius:100px;text-decoration:none;font-weight:700;font-size:1rem;display:inline-block;transition:all .25s;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,0,0,.15)}
+    .cta-sub{margin-top:14px;font-size:.74rem;color:rgba(255,255,255,.65)}
+
+    /* footer */
+    footer{background:var(--text-dark);padding:54px 56px 34px}
+    .ft-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:34px}
+    .ft-logo{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--orange);display:block;margin-bottom:10px}
+    .ft-tag{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.7;max-width:210px}
+    .ft-col h4{font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.28);margin-bottom:13px;font-weight:700}
+    .ft-col ul{list-style:none}
+    .ft-col li{margin-bottom:9px}
+    .ft-col a{color:rgba(255,255,255,.48);text-decoration:none;font-size:.84rem;transition:color .2s}
+    .ft-col a:hover{color:var(--orange-light)}
+    .ft-bot{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .ft-disc{font-size:.67rem;color:rgba(255,255,255,.2);max-width:550px;line-height:1.7}
+    .ft-copy{font-size:.73rem;color:rgba(255,255,255,.2)}
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — TABLET (641–1024px)
+    ══════════════════════════════════════ */
+    @media(max-width:1024px){
+      nav,.bc,.btf,.proof-strip,.cta-band,footer{ padding-left:32px; padding-right:32px }
+
+      /* PDP two-col tightens */
+      .pdp{ padding:36px 32px 64px; gap:40px; grid-template-columns:1fr 1fr }
+
+      /* Gallery: un-sticky, smaller gummy */
+      .gallery{ position:static }
+      .gummy-blob{ width:210px; height:210px; border-radius:44px }
+      .fc1{ top:32px; left:12px } .fc2{ top:110px; right:10px } .fc3{ bottom:52px; left:10px }
+
+      /* Gallery thumb labels wrap gracefully */
+      .thumb .tl{ font-size:.54rem }
+
+      /* Purchase box: relax padding */
+      .pbox{ padding:20px }
+
+      /* Proof strip: allow horizontal scroll */
+      .proof-strip{ padding:14px 32px; gap:0; justify-content:flex-start; overflow-x:auto }
+      .proof-item{ flex-shrink:0; padding:0 24px }
+
+      /* Below-fold grids go 2-col */
+      .study-grid{ grid-template-columns:1fr 1fr; gap:14px }
+      .rv-grid{ grid-template-columns:1fr 1fr; gap:14px }
+      /* third review card spans full width */
+      .rv-card:nth-child(3){ grid-column:span 2; max-width:480px; justify-self:center; width:100% }
+
+      /* Footer */
+      .ft-grid{ grid-template-columns:1fr 1fr 1fr; gap:32px }
+      .ft-brand{ grid-column:span 3 }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — MOBILE (≤640px)
+    ══════════════════════════════════════ */
+    @media(max-width:640px){
+      /* Nav */
+      nav{ padding:0 16px; height:58px }
+      .nav-links{ display:none }
+      .nav-ham{ display:flex }
+      /* Shrink cart button on small screens */
+      .btn-nav-cart{ padding:9px 14px; font-size:.78rem }
+      .cart-bubble{ width:16px; height:16px; font-size:.6rem }
+
+      /* Breadcrumb */
+      .bc{ padding:10px 16px; font-size:.7rem }
+
+      /* PDP: single column, tight padding */
+      .pdp{ grid-template-columns:1fr; padding:16px 16px 80px; gap:24px }
+      /* gallery no longer sticky */
+      .gallery{ position:static }
+
+      /* Gallery main: full-width square */
+      .gal-main{ border-radius:18px }
+      .gummy-blob{ width:190px; height:190px; border-radius:38px }
+      /* Float cards smaller */
+      .fc{ padding:7px 10px }
+      .fc .fl{ font-size:.58rem }
+      .fc .fv{ font-size:.82rem }
+      .fc1{ top:24px; left:10px }
+      .fc2{ top:96px; right:8px }
+      .fc3{ bottom:44px; left:8px }
+      .gal-badge{ font-size:.58rem; padding:4px 10px; top:12px; right:12px }
+
+      /* Thumbs: smaller, 5 across */
+      .thumb{ border-radius:11px; padding:5px 4px }
+      .thumb .tl{ font-size:.52rem }
+      .thumb .ti{ font-size:1.25rem }
+      .mini-gummy{ width:28px; height:28px }
+
+      /* Product column */
+      .star-row{ gap:6px; margin-bottom:12px }
+      .pullquote{ font-size:.8rem; padding:10px 13px }
+      .pdp-title{ font-size:1.85rem }
+      .pdp-sub{ font-size:.88rem }
+      .pills{ gap:6px }
+      .pill{ font-size:.7rem; padding:5px 11px }
+
+      /* Purchase box */
+      .pbox{ padding:16px; border-radius:20px }
+      /* Tab switcher: full width */
+      .ptyp{ border-radius:11px }
+      .ptab{ padding:11px 6px }
+      .pt-title{ font-size:.75rem }
+      .pt-sub{ font-size:.62rem }
+
+      /* Sub steps: compact */
+      .sub-steps{ padding:12px }
+      .step{ padding:8px 0; gap:9px }
+      .step-dot{ width:26px; height:26px; font-size:.68rem }
+      .step-title{ font-size:.74rem }
+      .step-body{ font-size:.68rem }
+
+      .sub-banner{ padding:10px 12px }
+      .sb-txt{ font-size:.72rem }
+
+      /* ATC button: larger touch target */
+      .btn-atc{ padding:18px; font-size:.95rem; border-radius:100px }
+
+      /* Trust row: smaller, tighter */
+      .trust-row{ gap:10px 14px }
+      .tr{ font-size:.62rem }
+
+      /* Guarantee */
+      .guar{ padding:13px 14px; border-radius:13px }
+      .guar-ic{ font-size:1.65rem }
+      .guar-tt{ font-size:.82rem }
+      .guar-bd{ font-size:.73rem }
+
+      /* Detail tabs */
+      .dtab-btn{ padding:11px 12px; font-size:.74rem }
+      .dbody{ font-size:.82rem }
+      .chk li{ font-size:.8rem }
+      .ing-tbl td{ font-size:.77rem; padding:10px 0 }
+      .isub{ font-size:.66rem }
+      .how-item{ padding:11px 0; gap:11px }
+      .how-n{ width:27px; height:27px; font-size:.78rem }
+      .how-t{ font-size:.82rem }
+      .how-b{ font-size:.75rem }
+
+      /* Proof strip: horizontal scroll */
+      .proof-strip{ padding:12px 0; justify-content:flex-start; gap:0 }
+      .proof-item{ padding:0 16px; font-size:.72rem }
+      .proof-num{ font-size:1.2rem }
+
+      /* BTF sections */
+      .btf{ padding:48px 16px }
+      .sec-lbl{ font-size:.65rem }
+      .sec-ttl{ font-size:1.65rem; margin-bottom:24px }
+
+      /* Study cards: single col */
+      .study-grid{ grid-template-columns:1fr; gap:12px }
+      .sc-title{ font-size:1rem }
+      .sc-body{ font-size:.77rem }
+      .stat-n{ font-size:1.9rem }
+
+      /* Reviews: single col */
+      .rv-grid{ grid-template-columns:1fr; gap:12px }
+      .rv-card:nth-child(3){ grid-column:1; max-width:100% }
+      .rv-card{ padding:20px }
+      .rv-body{ font-size:.82rem }
+
+      /* FAQ */
+      .faq-q{ font-size:.85rem; padding:16px 0 }
+      .faq-a{ font-size:.82rem }
+
+      /* CTA band */
+      .cta-band{ padding:56px 16px }
+      .btn-white{ padding:15px 36px; font-size:.95rem }
+      .cta-sub{ font-size:.7rem }
+
+      /* Footer */
+      footer{ padding:36px 16px 100px }
+      .ft-grid{ grid-template-columns:1fr 1fr; gap:24px }
+      .ft-brand{ grid-column:span 2 }
+      .ft-logo{ font-size:1.3rem }
+      .ft-tag{ font-size:.76rem }
+      .ft-col h4{ font-size:.64rem }
+      .ft-col a{ font-size:.8rem }
+      .ft-bot{ flex-direction:column; gap:8px }
+      .ft-disc{ font-size:.64rem }
+    }
+
+    /* ── PURCHASE BOX v2: qty grid + purchase type rows ── */
+    .qty-lbl { font-size: .82rem; font-weight: 800; color: var(--text-dark); margin-bottom: 11px; letter-spacing: -.01em; }
+    .qty-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .qcard2 {
+      position: relative;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 10px 13px;
+      cursor: pointer;
+      background: #fff;
+      text-align: center;
+      transition: border-color .18s, background .18s;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    }
+    .qcard2.on {
+      border-color: var(--text-dark);
+      box-shadow: 0 0 0 1px var(--text-dark);
+    }
+    .qcard2:hover:not(.on) { border-color: #aaa; }
+    .qbadge2 {
+      position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+      padding: 3px 10px; border-radius: 100px;
+      font-size: .58rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .qc2-name { font-size: .85rem; font-weight: 700; color: var(--text-dark); line-height: 1.25; }
+    .qc2-detail { font-size: .69rem; color: var(--text-light); margin-top: 2px; }
+
+    /* Purchase type rows */
+    .pur-row {
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 15px 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      background: #fff;
+      display: flex; align-items: flex-start; gap: 12px;
+      transition: border-color .18s;
+    }
+    .pur-row.on { border-color: var(--text-dark); box-shadow: 0 0 0 1px var(--text-dark); }
+    .pur-row:hover:not(.on) { border-color: #aaa; }
+    .pur-radio {
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+      border: 2px solid var(--border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; transition: all .15s;
+    }
+    .pur-row.on .pur-radio { border-color: var(--text-dark); background: var(--text-dark); }
+    .pur-radio::after { content: ''; width: 6px; height: 6px; background: #fff; border-radius: 50%; opacity: 0; transition: opacity .15s; }
+    .pur-row.on .pur-radio::after { opacity: 1; }
+    .pur-info { flex: 1; min-width: 0; }
+    .pur-title {
+      font-size: .88rem; font-weight: 700; color: var(--text-dark);
+      display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+    }
+    .pur-badge-inline {
+      background: var(--orange); color: #fff;
+      font-size: .58rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 100px; line-height: 1.6;
+    }
+    .pur-perks { display: flex; flex-direction: column; gap: 5px; margin-top: 9px; }
+    .pur-perk { font-size: .76rem; color: var(--text-mid); line-height: 1.4; display: flex; align-items: baseline; gap: 4px; }
+    .pur-perk::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .pur-perk strong { color: var(--orange); font-weight: 700; }
+    .pur-prices { flex-shrink: 0; text-align: right; padding-top: 1px; }
+    .pur-price { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--text-dark); }
+    .pur-was { font-size: .8rem; color: var(--text-light); text-decoration: line-through; margin-bottom: 2px; }
+    .pur-per-day { font-size: .69rem; color: var(--text-light); margin-top: 6px; }
+
+    @media(max-width:640px) {
+      .qty-grid { gap: 6px; }
+      .qcard2 { padding: 13px 7px 11px; border-radius: 11px; }
+      .qc2-name { font-size: .78rem; }
+      .qc2-detail { font-size: .63rem; }
+      .qbadge2 { font-size: .54rem; padding: 2px 7px; top: -9px; }
+      .pur-row { padding: 13px; gap: 10px; }
+      .pur-title { font-size: .83rem; }
+      .pur-perk { font-size: .71rem; }
+      .pur-price { font-size: 1.05rem; }
+    }
+
+    /* ══════════════════════════════════════
+       STICKY MOBILE ATC BAR
+       Appears on mobile, fixed to bottom
+    ══════════════════════════════════════ */
+    .sticky-atc{
+      display:none;
+      position:fixed; bottom:0; left:0; right:0; z-index:300;
+      background:#fff;
+      border-top:1px solid var(--border);
+      padding:12px 16px 16px;
+      box-shadow:0 -4px 24px rgba(0,0,0,.1);
+    }
+    .sticky-atc-inner{
+      display:flex; align-items:center; gap:10px; max-width:480px; margin:0 auto;
+    }
+    .sticky-atc-price{
+      flex-shrink:0;
+    }
+    .sticky-atc-price .sa-p{
+      font-family:'Fraunces',serif; font-size:1.3rem; font-weight:700; line-height:1;
+    }
+    .sticky-atc-price .sa-sub{
+      font-size:.62rem; color:var(--text-light); margin-top:1px;
+    }
+    .sticky-atc-btn{
+      flex:1; padding:14px; background:var(--orange); color:#fff; border:none;
+      border-radius:100px; font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:.9rem; font-weight:700; cursor:pointer;
+      transition:all .2s; box-shadow:0 3px 14px rgba(232,118,58,.35);
+      display:flex; align-items:center; justify-content:center; gap:6px;
+    }
+    .sticky-atc-btn:active{ transform:scale(.97) }
+    .sticky-atc-btn.ok{ background:var(--green) }
+
+    @media(max-width:640px){
+      .sticky-atc{ display:block }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ann"><strong>FREE SHIPPING</strong> on orders over $60 &nbsp;·&nbsp; 30-Day Money-Back Guarantee</div>
+
+<nav>
+  <a class="nav-logo" href="zeeno-homepage.html">Zeeno</a>
+  <ul class="nav-links">
+    <li><a href="#science">The Science</a></li>
+    <li><a href="#ingredients">Ingredients</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="nav-ham" id="ham" onclick="document.getElementById('ham').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="btn-nav-cart" href="#purchase">
+      🛒 Cart <span class="cart-bubble" id="cartBubble">0</span>
+    </a>
+  </div>
+</nav>
+
+<div class="bc">
+  <a href="zeeno-homepage.html">Home</a><span>›</span>
+  <a href="#">Shop</a><span>›</span>
+  <span>Zeeno Eye Gummies</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PDP ═══════════════════════════════════════ -->
+<div class="pdp">
+
+  <!-- ── GALLERY ── -->
+  <div class="gallery">
+    <div class="gal-main" id="galMain">
+
+      <!-- Slide 0: Hero gummy (visible by default) -->
+      <div class="slide-gummy" id="sl0">
+        <div class="gal-bg"></div>
+        <span class="gal-badge">Clinically Studied</span>
+        <div class="fc fc1"><div class="fl">Glare Recovery</div><div class="fv">~17% better</div></div>
+        <div class="fc fc2"><div class="fl">Eye Moisture</div><div class="fv">~29% longer</div></div>
+        <div class="fc fc3"><div class="fl">Daily dose</div><div class="fv">10mg Lutein</div></div>
+        <div class="gummy-blob"></div>
+      </div>
+
+      <!-- Slide 1: Eye science -->
+      <div class="slide-alt" id="sl1">
+        <div style="position:relative;width:150px;height:150px;margin:0 auto">
+          <div style="width:100%;height:100%;border-radius:50% 0 50% 0;transform:rotate(45deg);background:linear-gradient(135deg,#d4e8f8,#6aa3dc);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(58,126,200,.2);overflow:hidden">
+            <div style="width:50px;height:50px;background:radial-gradient(circle at 35% 35%,#555,#111);border-radius:50%"></div>
+          </div>
+          <div style="position:absolute;inset:-10px;border-radius:50%;border:2px solid rgba(232,118,58,.3);animation:eyePulse 3s ease-in-out infinite"></div>
+          <div style="position:absolute;inset:-22px;border-radius:50%;border:2px solid rgba(232,118,58,.14);animation:eyePulse 3s ease-in-out infinite .6s"></div>
+        </div>
+        <div>
+          <div style="font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin-bottom:7px">Your Macular Pigment</div>
+          <div style="font-size:.81rem;color:var(--text-mid);line-height:1.65;max-width:270px;margin:0 auto">Lutein + zeaxanthin concentrate at over 1,000× blood levels in the centre of your retina — your eye's natural blue-light filter.</div>
+        </div>
+        <div style="background:var(--off-white);border-radius:14px;padding:14px;width:100%;max-width:290px">
+          <div style="font-size:.61rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:7px">Blue-light spectrum absorbed</div>
+          <div style="height:9px;background:linear-gradient(90deg,#6600aa,#3a7ec8,#00aa44,#f5c832,#e8763a,#cc2222);border-radius:100px;position:relative;margin-bottom:16px">
+            <div style="position:absolute;top:-5px;left:35%;width:2px;height:19px;background:var(--orange)"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.6rem;color:var(--text-light)"><span>380nm</span><span style="color:var(--orange);font-weight:600">↑ 460nm peak</span><span>700nm</span></div>
+        </div>
+        <style>@keyframes eyePulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}</style>
+      </div>
+
+      <!-- Slide 2: Ingredients -->
+      <div class="slide-alt" id="sl2" style="flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:26px">
+        <div style="font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin-bottom:14px;width:100%;text-align:center">What's Inside</div>
+        <div style="width:100%">
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);align-items:center"><div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0"></div><span style="font-size:.79rem;font-weight:600">Lutemax® 2020</span></div><span style="font-size:.73rem;font-weight:700;color:var(--orange)">10mg + 2mg</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);align-items:center"><div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0"></div><span style="font-size:.79rem;font-weight:600">Vitamin A</span></div><span style="font-size:.73rem;font-weight:700;color:var(--orange)">900 mcg</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);align-items:center"><div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--cerulean);flex-shrink:0"></div><span style="font-size:.79rem;font-weight:600">Vitamins C + E</span></div><span style="font-size:.73rem;font-weight:700;color:var(--cerulean)">150mg + 20mg</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);align-items:center"><div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--cerulean);flex-shrink:0"></div><span style="font-size:.79rem;font-weight:600">Zinc</span></div><span style="font-size:.73rem;font-weight:700;color:var(--cerulean)">10mg</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;align-items:center"><div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0"></div><span style="font-size:.79rem;font-weight:600">Bilberry + Grape Seed</span></div><span style="font-size:.73rem;font-weight:700;color:var(--orange)">Blend</span></div>
+        </div>
+        <div style="background:var(--off-white);border:1px solid var(--border);border-radius:12px;padding:12px 14px;width:100%;margin-top:12px;text-align:center">
+          <div style="font-size:.69rem;font-weight:700;color:var(--orange)">Natural Berry Flavor</div>
+          <div style="font-size:.73rem;color:var(--text-light);margin-top:2px">From real blueberry extract · One gummy daily</div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Clinical studies -->
+      <div class="slide-alt" id="sl3" style="flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:26px">
+        <div style="font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin-bottom:14px;width:100%;text-align:center">Clinical Evidence</div>
+        <div style="width:100%">
+          <div style="display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--border)">
+            <div style="font-family:'Fraunces',serif;font-size:1.7rem;font-weight:700;color:var(--orange);width:58px;flex-shrink:0;line-height:1">~17%</div>
+            <div><div style="font-size:.8rem;font-weight:700;color:var(--text-dark)">Glare Recovery Improvement</div><div style="font-size:.7rem;color:var(--text-light);margin-top:1px">1-year placebo-controlled RCT</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--border)">
+            <div style="font-family:'Fraunces',serif;font-size:1.7rem;font-weight:700;color:var(--cerulean);width:58px;flex-shrink:0;line-height:1">~29%</div>
+            <div><div style="font-size:.8rem;font-weight:700;color:var(--text-dark)">Eye Moisture Improvement</div><div style="font-size:.7rem;color:var(--text-light);margin-top:1px">6-month RCT in screen users</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:11px 0">
+            <div style="font-family:'Fraunces',serif;font-size:1.7rem;font-weight:700;color:var(--ocean);width:58px;flex-shrink:0;line-height:1">~13%</div>
+            <div><div style="font-size:.8rem;font-weight:700;color:var(--text-dark)">Stronger Blue-Light Shield</div><div style="font-size:.7rem;color:var(--text-light);margin-top:1px">46-study meta-analysis</div></div>
+          </div>
+        </div>
+        <div style="background:var(--orange-xpale);border:1px solid var(--bord-o);border-radius:11px;padding:11px 13px;font-size:.73rem;color:var(--text-mid);line-height:1.55;margin-top:10px;width:100%">
+          All results from peer-reviewed placebo-controlled trials at the exact Lutemax® 2020 dose in Zeeno.
+        </div>
+      </div>
+
+      <!-- Slide 4: Lifestyle -->
+      <div class="slide-alt" id="sl4" style="background:linear-gradient(135deg,#FDE8C0,#F5A265 58%,#E8763A);padding:36px">
+        <div style="font-size:3.6rem">🌅</div>
+        <div style="font-family:'Fraunces',serif;font-size:1.55rem;font-weight:700;color:#fff;line-height:1.15;max-width:250px">See the world the way it's meant to look.</div>
+        <div style="font-size:.84rem;color:rgba(255,255,255,.85);max-width:240px">Golden-hour sunsets. Clear blue days. Screen days that don't hurt.</div>
+      </div>
+
+    </div><!-- /gal-main -->
+
+    <div class="thumbs">
+      <button class="thumb on" onclick="showSlide(0,this)"><div class="mini-gummy"></div><span class="tl">Product</span></button>
+      <button class="thumb" onclick="showSlide(1,this)"><span class="ti">👁️</span><span class="tl">Eye Science</span></button>
+      <button class="thumb" onclick="showSlide(2,this)"><span class="ti">🔬</span><span class="tl">Ingredients</span></button>
+      <button class="thumb" onclick="showSlide(3,this)"><span class="ti">📊</span><span class="tl">Studies</span></button>
+      <button class="thumb" onclick="showSlide(4,this)"><span class="ti">🌅</span><span class="tl">Lifestyle</span></button>
+    </div>
+  </div>
+
+  <!-- ── PRODUCT COLUMN ── -->
+  <div class="prod" id="purchase">
+
+    <div class="star-row">
+      <span class="stars">★★★★★</span>
+      <span class="rat">4.9</span>
+      <span class="rct">(1,247 reviews)</span>
+      <span class="rdiv">|</span>
+      <span class="cust-badge">✓ 5,000+ Daily Users</span>
+    </div>
+
+    <div class="pullquote">
+      "My eyes don't feel like sandpaper by 6pm anymore. Four months in and I won't go without it."
+      <cite>— Maya L., UX Designer</cite>
+    </div>
+
+    <h1 class="pdp-title">Daily Eye <em>Gummies</em></h1>
+    <p class="pdp-sub">One gummy a day. Powered by 10mg Lutemax® 2020 — the exact dose from clinical trials. Measurable improvements in glare recovery, eye moisture, and blue-light defence over 6–12 months.</p>
+
+    <div class="pills">
+      <div class="pill">💧 Screen Comfort</div>
+      <div class="pill">💡 Glare Recovery</div>
+      <div class="pill">🛡️ Blue-Light Shield</div>
+      <div class="pill">🌱 Vegan · Non-GMO</div>
+    </div>
+
+    <!-- ══ PURCHASE BOX ══ -->
+    <div class="pbox">
+
+      <!-- STEP 1: Quantity cards -->
+      <div class="qty-lbl">Buy More, Save More</div>
+      <div class="qty-opts qty-grid">
+
+        <div class="qcard2 on" data-idx="0" onclick="selectQty(this)">
+          <div class="qc2-name">1 Month</div>
+          <div class="qc2-detail">30 servings</div>
+        </div>
+
+        <div class="qcard2" data-idx="1" onclick="selectQty(this)">
+          <div class="qbadge2 qb-o">Most Popular</div>
+          <div class="qc2-name">2 Months + 1 Free</div>
+          <div class="qc2-detail">60 servings</div>
+        </div>
+
+        <div class="qcard2" data-idx="2" onclick="selectQty(this)">
+          <div class="qbadge2 qb-g">Best Value</div>
+          <div class="qc2-name">3 Months + 3 Free</div>
+          <div class="qc2-detail">90 servings</div>
+        </div>
+
+      </div>
+
+      <!-- STEP 2: Purchase type — Subscribe row -->
+      <div class="pur-row pur-sub on" id="purSub" onclick="setTab('sub')">
+        <div class="pur-radio" id="radioSub"><span class="pur-radio-dot"></span></div>
+        <div class="pur-info">
+          <div class="pur-title">Subscribe <span class="pur-badge-inline" id="subOffBadge">25% OFF</span></div>
+          <div class="pur-perks" id="subPerks">
+            <span class="pur-perk"><strong>Free Shipping</strong> Every 1 Month</span>
+            <span class="pur-perk">Save <strong id="subSaveAmt">$15</strong> On First Order</span>
+            <span class="pur-perk">Pause, Cancel, or Skip Anytime</span>
+            <span class="pur-perk">Early Access to New Products</span>
+          </div>
+          <div class="pur-per-day" id="subPerDay">$1.50/day · subscribe</div>
+        </div>
+        <div class="pur-prices">
+          <div class="pur-was" id="subWas">$60.00</div>
+          <div class="pur-price" id="subPrice">$45.00</div>
+        </div>
+      </div>
+
+      <!-- STEP 2: Purchase type — One-time row -->
+      <div class="pur-row" id="purOtp" onclick="setTab('otp')">
+        <div class="pur-radio" id="radioOtp"></div>
+        <div class="pur-info">
+          <div class="pur-title">One-Time Purchase</div>
+          <div class="pur-per-day" id="otpPerDay">$2.00/day</div>
+        </div>
+        <div class="pur-prices">
+          <div class="pur-price" id="otpPrice">$60</div>
+        </div>
+      </div>
+
+      <!-- ATC -->
+      <button class="btn-atc" id="atcBtn" onclick="addToCart()">
+        🛒 <span id="atcTxt">Subscribe &amp; Save — $45</span>
+      </button>
+
+      <div class="trust-row">
+        <div class="tr">🚚 Free Shipping</div>
+        <div class="tr">🔒 30-Day Guarantee</div>
+        <div class="tr">🇺🇸 Made in USA</div>
+        <div class="tr">🌱 Vegan · Non-GMO</div>
+      </div>
+    </div><!-- /pbox -->
+
+    <!-- Guarantee -->
+    <div class="guar">
+      <div class="guar-ic">🛡️</div>
+      <div>
+        <div class="guar-tt">30-Day Money-Back Guarantee</div>
+        <div class="guar-bd">Try Zeeno for 30 days. Not completely satisfied? Return any unopened bottles for a full refund — no questions, no hoops.</div>
+      </div>
+    </div>
+
+    <!-- Detail tabs -->
+    <div class="dtabs">
+      <div class="dtab-nav">
+        <button class="dtab-btn on" onclick="setDtab('desc',this)">Description</button>
+        <button class="dtab-btn" onclick="setDtab('ing',this)">Ingredients</button>
+        <button class="dtab-btn" onclick="setDtab('how',this)">How to Use</button>
+      </div>
+
+      <div class="dpanel on" id="dp-desc">
+        <div class="dbody">
+          <p><strong>Zeeno is a daily eye gummy for the modern screen life.</strong> Powered by Lutemax® 2020 — the clinically studied form of lutein and zeaxanthin from placebo-controlled human trials — it supports your eyes' natural ability to filter blue light, recover from glare, and stay comfortable through long screen days.</p>
+          <p>Most adults don't get enough lutein and zeaxanthin from diet alone. Zeeno delivers the exact dose studied: <strong>10mg lutein + 2mg zeaxanthin isomers</strong>, every day, in a natural berry gummy you'll actually look forward to.</p>
+          <ul class="chk">
+            <li>~17% glare recovery improvement · 1-year clinical trial</li>
+            <li>~29% eye moisture improvement · 6-month RCT in screen users</li>
+            <li>Builds your eye's natural blue-light shield over 3–12 months</li>
+            <li>Natural berry flavour from real blueberry extract</li>
+            <li>Vegan · gluten-free · non-GMO · no artificial sweeteners</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dpanel" id="dp-ing">
+        <div class="dbody">
+          <table class="ing-tbl" id="ingredients">
+            <tr><td class="in"><span class="ipip ipo"></span>Lutemax® 2020 (Lutein)<div class="isub">Builds macular pigment — your eye's natural blue-light filter</div></td><td class="ia io">10 mg</td></tr>
+            <tr><td class="in"><span class="ipip ipo"></span>Lutemax® 2020 (Zeaxanthin Isomers)<div class="isub">Concentrates in the fovea alongside lutein at highest density</div></td><td class="ia io">2 mg</td></tr>
+            <tr><td class="in"><span class="ipip ipo"></span>Vitamin A<div class="isub">Key component of rhodopsin, the retina's light-sensing protein</div></td><td class="ia io">900 mcg</td></tr>
+            <tr><td class="in"><span class="ipip ipb"></span>Vitamin C + Vitamin E<div class="isub">Antioxidant duo for foundational cellular protection in eye tissue</div></td><td class="ia ib">150 mg / 20 mg</td></tr>
+            <tr><td class="in"><span class="ipip ipb"></span>Zinc<div class="isub">Essential mineral supporting normal retinal function throughout eye tissue</div></td><td class="ia ib">10 mg</td></tr>
+            <tr><td class="in"><span class="ipip ipo"></span>Bilberry + Grape Seed Extract<div class="isub">Plant-source antioxidants for eye tissue support and low-light performance</div></td><td class="ia io">Blend</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="dpanel" id="dp-how">
+        <ol class="how-list">
+          <li class="how-item"><div class="how-n">1</div><div><div class="how-t">Take 1 gummy daily</div><div class="how-b">Best taken in the morning, with or without food. Consistency matters most — clinical benefits accumulate over 3–12 months of daily use.</div></div></li>
+          <li class="how-item"><div class="how-n">2</div><div><div class="how-t">Notice comfort changes first (weeks – 3 months)</div><div class="how-b">Eyes feeling less tired and strained is the first sign the nutrients are absorbing and working.</div></div></li>
+          <li class="how-item"><div class="how-n">3</div><div><div class="how-t">Measurable improvements at 6–12 months</div><div class="how-b">Objective improvements in glare recovery and eye moisture were measured in clinical studies at 6 and 12 months of daily supplementation.</div></div></li>
+          <li class="how-item"><div class="how-n">4</div><div><div class="how-t">Stay consistent — subscribe and save</div><div class="how-b">Macular pigment is a long-term investment. Subscribe to stay on track and lock in your best price. Cancel or pause anytime.</div></div></li>
+        </ol>
+      </div>
+
+    </div>
+
+  </div><!-- /prod -->
+</div><!-- /pdp -->
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item"><span class="proof-num">5,000+</span> Daily Users</div>
+  <div class="proof-item"><span class="proof-num">4.9★</span> Avg Rating</div>
+  <div class="proof-item"><span class="proof-num">~17%</span> Glare Recovery (1-yr trial)</div>
+  <div class="proof-item"><span class="proof-num">~29%</span> Eye Moisture (6-mo trial)</div>
+  <div class="proof-item"><span class="proof-num">46</span> Studies in Meta-Analysis</div>
+</div>
+
+<!-- BTF: SCIENCE -->
+<div class="btf" id="science">
+  <div class="btf-inner">
+    <span class="sec-lbl">The Clinical Evidence</span>
+    <h2 class="sec-ttl">Three studies. Real results. <em>Real humans.</em></h2>
+    <div class="study-grid">
+      <div class="study-card">
+        <div class="sc-bar sc-bar-o"></div>
+        <div class="sc-tag sct-o">📄 1-Year RCT · Placebo-Controlled</div>
+        <div class="sc-title">Glare Recovery</div>
+        <div class="sc-body">A double-blind trial at the exact Lutemax® 2020 dose found measurable improvement in photostress recovery — how fast eyes reset after a bright flash of light.</div>
+        <div class="sc-stat"><span class="stat-n sn-o">~17%</span><span class="stat-d">Improvement in glare<br>recovery vs placebo at 12 months</span></div>
+      </div>
+      <div class="study-card">
+        <div class="sc-bar sc-bar-b"></div>
+        <div class="sc-tag sct-b">📄 6-Month RCT · Screen Users &gt;6 hrs/day</div>
+        <div class="sc-title">Eye Moisture &amp; Comfort</div>
+        <div class="sc-body">In heavy screen users, the clinically studied dose improved the moisture layer that keeps eyes clear and comfortable — measured objectively with a validated device.</div>
+        <div class="sc-stat"><span class="stat-n sn-b">~29%</span><span class="stat-d">Eye moisture improvement<br>25.5 → 33.0 sec tear stability</span></div>
+      </div>
+      <div class="study-card">
+        <div class="sc-bar sc-bar-c"></div>
+        <div class="sc-tag sct-c">📊 46-Study Meta-Analysis</div>
+        <div class="sc-title">Built-In Blue-Light Defence</div>
+        <div class="sc-body">A large systematic review confirmed consistent daily lutein + zeaxanthin increases macular pigment optical density — your eye's internal blue-light filter that builds over time.</div>
+        <div class="sc-stat"><span class="stat-n sn-c">~13%</span><span class="stat-d">Increase in macular<br>pigment density at 3–12 months</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BTF: REVIEWS -->
+<div class="btf rev-btf" id="reviews">
+  <div class="btf-inner">
+    <span class="sec-lbl">Customer Reviews</span>
+    <h2 class="sec-ttl">Trusted by people who <em>live on screens.</em></h2>
+    <div class="rv-grid">
+      <div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-body">"I've been taking Zeeno for 4 months and the difference at the end of a long workday is real. My eyes don't feel like sandpaper anymore by 6pm."</div><div class="rv-author">Maya L.</div><div class="rv-role">UX Designer · 10+ hrs/day on screen</div><div class="rv-ver">✓ Verified Purchase · Subscribed 4 months</div></div>
+      <div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-body">"Night driving used to stress me out. After about 3 months on Zeeno, oncoming headlights just… bother me less. Very noticeable difference."</div><div class="rv-author">James K.</div><div class="rv-role">Sales Rep · Drives 2+ hrs/day</div><div class="rv-ver">✓ Verified Purchase · 3 Months + 3 Free bundle</div></div>
+      <div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-body">"Parent + remote worker. Zeeno is the supplement I actually remember to take because the gummy is genuinely delicious. Eye comfort improvement is real."</div><div class="rv-author">Priya S.</div><div class="rv-role">Marketing Manager · WFH</div><div class="rv-ver">✓ Verified Purchase · Subscribed 6 months</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BTF: FAQ -->
+<div class="btf faq-btf" id="faq">
+  <div class="btf-inner">
+    <div class="faq-wrap">
+      <span class="sec-lbl">FAQ</span>
+      <h2 class="sec-ttl" style="margin-bottom:20px">Common <em>questions.</em></h2>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">How long before I notice a difference? <span class="faq-ch">+</span></button><div class="faq-a">Comfort improvements (less dryness, less fatigue) are often noticed within 1–3 months. Measurable objective improvements in glare recovery and eye moisture appear in clinical studies at 6–12 months. Consistency is the key — that's why we recommend subscribing.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Why subscribe instead of buying once? <span class="faq-ch">+</span></button><div class="faq-a">The benefits build over months of daily use — this isn't a supplement you feel immediately. Subscribing keeps you consistent, saves up to 25%, and gives you free shipping on every order. Cancel or pause anytime with one click.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What does "2 Months + 1 Free" mean? <span class="faq-ch">+</span></button><div class="faq-a">You get 3 bottles (90-day supply) for the listed price. At the subscribe price of $99 you're paying $33/month vs $60 for a single bottle — saving $81. At the one-time price of $119 you save $61 vs three separate purchases.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Will this replace my glasses or contacts? <span class="faq-ch">+</span></button><div class="faq-a">No — Zeeno supports your eye nutrition and visual performance, not your prescription. It works alongside glasses, contacts, and blue-light glasses.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Is it safe for daily use? <span class="faq-ch">+</span></button><div class="faq-a">In a 6-month placebo-controlled trial in heavy screen users, this dose was well-tolerated with no serious adverse reactions reported. Consult your healthcare provider if pregnant, nursing, or on medications.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What is Lutemax® 2020? <span class="faq-ch">+</span></button><div class="faq-a">Lutemax® 2020 is a premium patented form of lutein and zeaxanthin isomers derived from marigold flowers. It's the specific ingredient used in the placebo-controlled human clinical trials referenced on this page. Not all lutein supplements use this form or this dose.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <span class="cta-lbl">Start Today</span>
+    <h2 class="cta-ttl">See the world the way it's <em>meant to look.</em></h2>
+    <p class="cta-p">Try Zeeno for 30 days. Not completely satisfied? Return any unopened bottles for a full refund. Your vision is worth the investment.</p>
+    <a class="btn-white" href="#purchase">Shop Zeeno</a>
+    <div class="cta-sub">🔒 30-Day Guarantee &nbsp;·&nbsp; Free Shipping &nbsp;·&nbsp; Cancel Anytime</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <span class="ft-logo">Zeeno</span>
+      <p class="ft-tag">Daily eye nutrition for the modern screen life. Clinically studied lutein + zeaxanthin for visual comfort and performance.</p>
+    </div>
+    <div class="ft-col"><h4>Shop</h4><ul><li><a href="#">Zeeno Gummies</a></li><li><a href="#">Subscribe &amp; Save</a></li><li><a href="#">Bundles</a></li></ul></div>
+    <div class="ft-col"><h4>Learn</h4><ul><li><a href="#">How It Works</a></li><li><a href="#science">The Science</a></li><li><a href="#faq">FAQ</a></li><li><a href="#">About Zeeno</a></li></ul></div>
+    <div class="ft-col"><h4>Support</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Instagram</a></li></ul></div>
+  </div>
+  <div class="ft-bot">
+    <div class="ft-disc">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</div>
+    <div class="ft-copy">© 2026 Zeeno</div>
+  </div>
+</footer>
+
+<script>
+// ══ PRICING DATA ══
+const QTY = [
+  { name:'1 Month',           otpP:60,  subP:45,  subSave:'$15', subOff:'25% OFF', perDaySub:'$1.50/day', perDayOtp:'$2.00/day' },
+  { name:'2 Months + 1 Free', otpP:119, subP:99,  subSave:'$20', subOff:'17% OFF', perDaySub:'$1.10/day', perDayOtp:'$1.32/day' },
+  { name:'3 Months + 3 Free', otpP:179, subP:159, subSave:'$20', subOff:'11% OFF', perDaySub:'$0.88/day', perDayOtp:'$0.99/day' },
+];
+
+let tab = 'sub', qty = 0, cartN = 0;
+
+function fmt(n){ return '$' + Math.round(n); }
+
+function setTab(t) {
+  tab = t;
+  document.getElementById('purSub').classList.toggle('on', t === 'sub');
+  document.getElementById('purOtp').classList.toggle('on', t === 'otp');
+  render();
+}
+
+function selectQty(el) {
+  document.querySelectorAll('.qcard2').forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+  qty = parseInt(el.dataset.idx);
+  render();
+}
+
+function render() {
+  const q = QTY[qty];
+  const isSub = tab === 'sub';
+  const price = isSub ? q.subP : q.otpP;
+
+  // Sub row
+  document.getElementById('subPrice').textContent   = fmt(q.subP);
+  document.getElementById('subWas').textContent     = fmt(q.otpP);
+  document.getElementById('subSaveAmt').textContent = q.subSave;
+  document.getElementById('subOffBadge').textContent = q.subOff;
+  document.getElementById('subPerDay').textContent  = q.perDaySub + ' · subscribe';
+
+  // OTP row
+  document.getElementById('otpPrice').textContent   = fmt(q.otpP);
+  document.getElementById('otpPerDay').textContent  = q.perDayOtp;
+
+  // ATC
+  document.getElementById('atcTxt').innerHTML = isSub
+    ? 'Subscribe &amp; Save — ' + fmt(price)
+    : 'Add to Cart — ' + fmt(price);
+
+  // Sticky
+  const sp = document.getElementById('stickyPrice');
+  const ss = document.getElementById('stickySubLine');
+  const sl = document.getElementById('stickyAtcLabel');
+  if(sp) sp.textContent = fmt(price);
+  if(ss) ss.textContent = isSub ? 'Subscribe & Save' : 'One-time purchase';
+  if(sl) sl.innerHTML  = isSub ? 'Subscribe &amp; Save' : 'Add to Cart';
+}
+
+function addToCart() {
+  const btn = document.getElementById('atcBtn');
+  btn.classList.add('ok');
+  btn.innerHTML = '✓ &nbsp;Added to Cart!';
+  cartN++;
+  document.getElementById('cartBubble').textContent = cartN;
+  setTimeout(() => { btn.classList.remove('ok'); btn.innerHTML='🛒 <span id="atcTxt"></span>'; render(); }, 2200);
+}
+
+// ── GALLERY ──
+function showSlide(idx, btn) {
+  for(let i=0;i<5;i++){
+    const el = document.getElementById('sl'+i);
+    if(!el) continue;
+    if(i===0){ el.style.display = idx===0 ? 'flex':'none'; }
+    else { el.style.display = idx===i ? 'flex':'none'; }
+  }
+  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+// ── DETAIL TABS ──
+function setDtab(id, btn) {
+  document.querySelectorAll('.dtab-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.dpanel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('dp-'+id).classList.add('on');
+}
+
+// ── FAQ ──
+function tFaq(btn) {
+  const item = btn.parentElement;
+  const was = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!was) item.classList.add('open');
+}
+
+// ── INIT ──
+render();
+// hide alt slides on load
+for(let i=1;i<5;i++){ const s=document.getElementById('sl'+i); if(s) s.style.display='none'; }
+
+// ── STICKY ATC: show after purchase box scrolls out of view ──
+(function(){
+  const box = document.getElementById('purchase');
+  const bar = document.getElementById('stickyAtc');
+  if(!box || !bar) return;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ bar.style.display = e.isIntersecting ? 'none' : 'block'; });
+  },{ threshold:0, rootMargin:'0px 0px -60px 0px' });
+  obs.observe(box);
+})();
+
+function stickyAdd(){
+  const btn = document.getElementById('stickyBtn');
+  btn.classList.add('ok');
+  btn.innerHTML = '✓ Added!';
+  cartN++;
+  document.getElementById('cartBubble').textContent = cartN;
+  setTimeout(()=>{ btn.classList.remove('ok'); btn.innerHTML='🛒 <span id="stickyAtcLabel"></span>'; render(); }, 2000);
+}
+</script>
+
+<!-- STICKY MOBILE ATC BAR -->
+<div class="sticky-atc" id="stickyAtc" style="display:none">
+  <div class="sticky-atc-inner">
+    <div class="sticky-atc-price">
+      <div class="sa-p" id="stickyPrice">$45</div>
+      <div class="sa-sub" id="stickySubLine">Subscribe &amp; Save</div>
+    </div>
+    <button class="sticky-atc-btn" id="stickyBtn" onclick="stickyAdd()">
+      🛒 <span id="stickyAtcLabel">Subscribe &amp; Save</span>
+    </button>
+  </div>
+</div>
+
+</body>
+</html>
