@@ -494,6 +494,7 @@
       font-size: .58rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
       padding: 2px 8px; border-radius: 100px; line-height: 1.6;
     }
+    .pur-badge-inline.blue { background: var(--cerulean); }
     .pur-perks { display: flex; flex-direction: column; gap: 5px; margin-top: 9px; }
     .pur-perk { font-size: .76rem; color: var(--text-mid); line-height: 1.4; display: flex; align-items: baseline; gap: 4px; }
     .pur-perk::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
@@ -737,7 +738,7 @@
           <div class="pur-title">Subscribe <span class="pur-badge-inline" id="subOffBadge">25% OFF</span></div>
           <div class="pur-perks" id="subPerks">
             <span class="pur-perk"><strong>Free Shipping</strong> Every 1 Month</span>
-            <span class="pur-perk">Save <strong id="subSaveAmt">$15</strong> On First Order</span>
+            <span class="pur-perk">Save <strong id="subSaveAmt">$15</strong> per Order</span>
             <span class="pur-perk">Pause, Cancel, or Skip Anytime</span>
             <span class="pur-perk">Early Access to New Products</span>
           </div>
@@ -753,7 +754,7 @@
       <div class="pur-row" id="purOtp" onclick="setTab('otp')">
         <div class="pur-radio" id="radioOtp"></div>
         <div class="pur-info">
-          <div class="pur-title">One-Time Purchase</div>
+          <div class="pur-title">One-Time Purchase <span class="pur-badge-inline blue" id="otpOffBadge" style="display:none"></span></div>
           <div class="pur-per-day" id="otpPerDay">$2.00/day</div>
         </div>
         <div class="pur-prices">
@@ -932,9 +933,9 @@
 <script>
 // ══ PRICING DATA ══
 const QTY = [
-  { name:'1 Month',           otpP:60,  subP:45,  subSave:'$15', subOff:'25% OFF', perDaySub:'$1.50/day', perDayOtp:'$2.00/day' },
-  { name:'2 Months + 1 Free', otpP:119, subP:99,  subSave:'$20', subOff:'17% OFF', perDaySub:'$1.10/day', perDayOtp:'$1.32/day' },
-  { name:'3 Months + 3 Free', otpP:179, subP:159, subSave:'$20', subOff:'11% OFF', perDaySub:'$0.88/day', perDayOtp:'$0.99/day' },
+  { name:'1 Month',           otpP:60,  subP:45,  subSave:'$15', subOff:'25% OFF', otpOff:null,      perDaySub:'$1.50/day', perDayOtp:'$2.00/day' },
+  { name:'2 Months + 1 Free', otpP:119, subP:99,  subSave:'$20', subOff:'45% OFF', otpOff:'34% OFF', perDaySub:'$1.10/day', perDayOtp:'$1.32/day' },
+  { name:'3 Months + 3 Free', otpP:179, subP:159, subSave:'$20', subOff:'56% OFF', otpOff:'50% OFF', perDaySub:'$0.88/day', perDayOtp:'$0.99/day' },
 ];
 
 let tab = 'sub', qty = 0, cartN = 0;
@@ -970,6 +971,11 @@ function render() {
   // OTP row
   document.getElementById('otpPrice').textContent   = fmt(q.otpP);
   document.getElementById('otpPerDay').textContent  = q.perDayOtp;
+  const otpBadge = document.getElementById('otpOffBadge');
+  if (otpBadge) {
+    otpBadge.textContent  = q.otpOff || '';
+    otpBadge.style.display = q.otpOff ? '' : 'none';
+  }
 
   // ATC
   document.getElementById('atcTxt').innerHTML = isSub
