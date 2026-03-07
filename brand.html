@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeeno Brand Guide — Typography & Color</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* ── ORANGES ── */
+    --orange:       #E8763A;
+    --orange-light: #F5A265;
+    --orange-pale:  #FDE8D4;
+    --orange-xpale: #FEF4EC;
+
+    /* ── BLUES ── */
+    --cerulean:       #3A7EC8;
+    --cerulean-light: #6AA3DC;
+    --cerulean-pale:  #D4E8F8;
+    --cerulean-xpale: #EEF5FC;
+    --ocean:          #1A5C96;
+
+    /* ── GREENS (accent/feedback) ── */
+    --green:      #2A9D72;
+    --green-pale: #E6F7F1;
+
+    /* ── NEUTRALS ── */
+    --ink:        #1A1A2E;
+    --slate:      #4A4A6A;
+    --mist:       #8888AA;
+    --border:     #E8E8F0;
+    --off-white:  #FDF9F5;
+    --cream:      #FEF5EA;
+    --white:      #FFFFFF;
+
+    --ff-display: 'Fraunces', serif;
+    --ff-body:    'Plus Jakarta Sans', sans-serif;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    background: var(--off-white);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── LAYOUT ── */
+  .guide-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 72px 40px 120px;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 56px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+  }
+  .cover-brand {
+    font-family: var(--ff-display);
+    font-size: 3.6rem;
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: 1;
+    color: var(--orange);
+  }
+  .cover-brand span { color: var(--ink); }
+  .cover-meta {
+    text-align: right;
+    font-size: .74rem;
+    font-weight: 500;
+    color: var(--mist);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    line-height: 1.9;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .sec-header {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+  .sec-num {
+    font-family: var(--ff-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--orange-pale);
+    line-height: 1;
+    letter-spacing: -.04em;
+    user-select: none;
+  }
+  .sec-title {
+    font-family: var(--ff-display);
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -.025em;
+    color: var(--ink);
+  }
+  .sec-title em { font-style: italic; font-weight: 300; color: var(--orange); }
+
+  section { margin-bottom: 96px; }
+
+  /* ── TYPOGRAPHY SPECIMENS ── */
+  .type-grid { display: flex; flex-direction: column; gap: 0; }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0 40px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .type-row:first-child { border-top: 1px solid var(--border); }
+
+  .type-meta {
+    padding-top: 6px;
+    position: sticky;
+    top: 20px;
+  }
+  .type-label {
+    display: inline-block;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--orange);
+    background: var(--orange-xpale);
+    border: 1px solid var(--orange-pale);
+    border-radius: 100px;
+    padding: 4px 11px;
+    margin-bottom: 12px;
+  }
+  .type-specs { display: flex; flex-direction: column; gap: 4px; }
+  .type-spec {
+    font-size: .69rem;
+    color: var(--mist);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .type-spec strong {
+    color: var(--slate);
+    font-weight: 600;
+    display: block;
+    font-size: .62rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 1px;
+  }
+
+  .type-sample { flex: 1; }
+
+  /* H1 */
+  .s-h1 {
+    font-family: var(--ff-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -.035em;
+    color: var(--ink);
+  }
+  .s-h1 em { font-style: italic; font-weight: 300; color: var(--orange); }
+
+  /* H2 */
+  .s-h2 {
+    font-family: var(--ff-display);
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -.03em;
+    color: var(--ink);
+  }
+  .s-h2 em { font-style: italic; font-weight: 300; color: var(--orange); }
+
+  /* H3 */
+  .s-h3 {
+    font-family: var(--ff-display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.022em;
+    color: var(--ink);
+  }
+
+  /* H4 */
+  .s-h4 {
+    font-family: var(--ff-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -.012em;
+    color: var(--ink);
+  }
+
+  /* Product title */
+  .s-pdp-title {
+    font-family: var(--ff-display);
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    color: var(--ink);
+  }
+  .s-pdp-title em { font-style: italic; font-weight: 300; color: var(--orange); }
+
+  /* Eyebrow */
+  .s-eyebrow {
+    font-family: var(--ff-body);
+    font-size: .72rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  /* Subtitle */
+  .s-subtitle {
+    font-family: var(--ff-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--slate);
+  }
+
+  /* Body */
+  .s-body {
+    font-family: var(--ff-body);
+    font-size: .9375rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--slate);
+  }
+
+  /* Body small */
+  .s-body-sm {
+    font-family: var(--ff-body);
+    font-size: .84rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--slate);
+  }
+
+  /* Caption */
+  .s-caption {
+    font-family: var(--ff-body);
+    font-size: .72rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--mist);
+  }
+
+  /* CTA / button */
+  .s-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ff-body);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .01em;
+    background: var(--orange);
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: 100px;
+    border: none;
+    cursor: default;
+  }
+
+  /* Nav link */
+  .s-nav {
+    font-family: var(--ff-body);
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--slate);
+  }
+
+  /* Stat / number display */
+  .s-stat {
+    font-family: var(--ff-display);
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.04em;
+    color: var(--orange);
+  }
+
+  /* Pull quote */
+  .s-pullquote {
+    font-family: var(--ff-body);
+    font-size: .9rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--slate);
+    border-left: 3px solid var(--orange);
+    padding-left: 16px;
+  }
+  .s-pullquote cite {
+    display: block;
+    font-style: normal;
+    font-size: .72rem;
+    font-weight: 500;
+    color: var(--mist);
+    margin-top: 6px;
+  }
+
+  /* ── FONT PAIR CALLOUT ── */
+  .font-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .font-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 28px 24px;
+  }
+  .font-card-name {
+    font-size: .62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: var(--mist);
+    margin-bottom: 14px;
+  }
+  .font-card-display {
+    font-size: 2.4rem;
+    line-height: 1.15;
+    letter-spacing: -.03em;
+    margin-bottom: 14px;
+  }
+  .fraunces { font-family: var(--ff-display); font-weight: 700; color: var(--ink); }
+  .fraunces-i { font-family: var(--ff-display); font-style: italic; font-weight: 300; color: var(--orange); }
+  .jakarta { font-family: var(--ff-body); font-weight: 300; color: var(--ink); }
+  .font-card-weights {
+    display: flex; flex-wrap: wrap; gap: 8px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .wt-chip {
+    font-size: .7rem; padding: 4px 11px; border-radius: 100px;
+    background: var(--off-white); border: 1px solid var(--border); color: var(--slate);
+    font-family: var(--ff-body);
+  }
+  .wt-chip .wt-name { font-weight: 500; }
+  .wt-chip.used { background: var(--orange-xpale); border-color: var(--orange-pale); color: var(--orange); }
+  .font-card-meta {
+    font-size: .73rem;
+    color: var(--slate);
+    line-height: 1.65;
+    margin-top: 14px;
+  }
+
+  /* ── COLORS ── */
+  .color-section { margin-bottom: 52px; }
+  .color-section-title {
+    font-size: .62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--mist);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .color-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .color-chip {
+    display: flex;
+    flex-direction: column;
+    min-width: 148px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.07);
+    background: #fff;
+    flex: 1;
+    min-width: 135px;
+    max-width: 200px;
+  }
+  .chip-swatch {
+    height: 72px;
+    position: relative;
+  }
+  .chip-swatch.dark-text .chip-hex { color: rgba(0,0,0,.45); }
+  .chip-swatch.light-text .chip-hex { color: rgba(255,255,255,.7); }
+  .chip-hex {
+    position: absolute;
+    bottom: 8px;
+    right: 11px;
+    font-family: var(--ff-body);
+    font-size: .63rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    font-feature-settings: 'tnum';
+  }
+  .chip-body {
+    padding: 12px 13px 14px;
+    border-top: 1px solid rgba(0,0,0,.06);
+  }
+  .chip-name {
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .chip-token {
+    font-size: .6rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    color: var(--orange);
+    margin-bottom: 7px;
+    letter-spacing: .02em;
+  }
+  .chip-use {
+    font-size: .67rem;
+    color: var(--mist);
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  /* ── PAIRING EXAMPLE ── */
+  .pairing-demo {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 40px 36px;
+    margin-top: 40px;
+  }
+  .pairing-demo-label {
+    font-size: .62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: var(--mist);
+    margin-bottom: 28px;
+  }
+  .demo-eyebrow {
+    font-family: var(--ff-body);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .demo-h2 {
+    font-family: var(--ff-display);
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1.12;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .demo-h2 em { font-style: italic; font-weight: 300; color: var(--orange); }
+  .demo-body {
+    font-family: var(--ff-body);
+    font-size: .9375rem;
+    line-height: 1.8;
+    color: var(--slate);
+    font-weight: 300;
+    max-width: 540px;
+    margin-bottom: 28px;
+  }
+  .demo-btns { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .demo-btn-primary {
+    font-family: var(--ff-body);
+    font-size: .9rem;
+    font-weight: 700;
+    background: var(--orange);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 100px;
+    cursor: default;
+    letter-spacing: .01em;
+    border: none;
+  }
+  .demo-btn-ghost {
+    font-family: var(--ff-body);
+    font-size: .9rem;
+    font-weight: 600;
+    background: transparent;
+    color: var(--cerulean);
+    padding: 13px 28px;
+    border-radius: 100px;
+    cursor: default;
+    border: 1.5px solid var(--cerulean-pale);
+  }
+  .demo-caption {
+    font-family: var(--ff-body);
+    font-size: .72rem;
+    font-weight: 500;
+    color: var(--mist);
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── DO / DON'T ── */
+  .rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .rule-card {
+    border-radius: 14px;
+    padding: 20px 22px;
+    font-size: .8rem;
+    line-height: 1.65;
+    color: var(--slate);
+  }
+  .rule-do {
+    background: var(--green-pale);
+    border: 1px solid rgba(42,157,114,.2);
+  }
+  .rule-dont {
+    background: #fff3f3;
+    border: 1px solid rgba(200,60,60,.12);
+  }
+  .rule-label {
+    font-size: .62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    margin-bottom: 9px;
+    display: block;
+  }
+  .rule-do   .rule-label { color: var(--green); }
+  .rule-dont .rule-label { color: #c83c3c; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:680px) {
+    .guide-wrap { padding: 40px 20px 80px; }
+    .cover-brand { font-size: 2.6rem; }
+    .cover-meta { text-align: left; }
+    .font-pair { grid-template-columns: 1fr; }
+    .type-row { grid-template-columns: 1fr; gap: 16px; }
+    .type-meta { position: static; padding-top: 0; }
+    .s-h1 { font-size: 2.4rem; }
+    .s-h2 { font-size: 1.9rem; }
+    .s-pdp-title { font-size: 2rem; }
+    .rules { grid-template-columns: 1fr; }
+    .color-chip { min-width: 120px; }
+    .pairing-demo { padding: 24px 20px; }
+    .demo-h2 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="guide-wrap">
+
+  <!-- ═══ COVER ═══ -->
+  <header class="cover">
+    <div>
+      <div class="cover-brand">Zeeno<span>.</span></div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--mist);margin-top:8px;letter-spacing:.04em">Typography & Color System</div>
+    </div>
+    <div class="cover-meta">
+      Brand Guide v1.0<br>
+      2026<br>
+      For internal & agency use
+    </div>
+  </header>
+
+
+  <!-- ═══ 01 — TYPOGRAPHY ═══ -->
+  <section>
+    <div class="sec-header">
+      <div class="sec-num">01</div>
+      <h2 class="sec-title">Type&shy;graphy <em>System</em></h2>
+    </div>
+
+    <!-- Font pair cards -->
+    <div class="font-pair">
+      <div class="font-card">
+        <div class="font-card-name">Display Font</div>
+        <div class="font-card-display">
+          <span class="fraunces">Fraunces</span><br>
+          <span class="fraunces-i">Optical size</span>
+        </div>
+        <div class="font-card-meta">
+          A soft-serif variable typeface with optical-size axis and lively italic cuts. Brings warmth, credibility, and editorial character to headlines. Named after the Edith Wharton novel.
+        </div>
+        <div class="font-card-weights">
+          <div class="wt-chip used"><span class="wt-name">Light 300</span></div>
+          <div class="wt-chip used"><span class="wt-name">SemiBold 600</span></div>
+          <div class="wt-chip used"><span class="wt-name">Bold 700</span></div>
+          <div class="wt-chip used"><span class="wt-name">Italic 300i</span></div>
+          <div class="wt-chip used"><span class="wt-name">Italic 600i</span></div>
+        </div>
+      </div>
+
+      <div class="font-card">
+        <div class="font-card-name">Body Font</div>
+        <div class="font-card-display">
+          <span class="jakarta">Plus Jakarta<br>Sans</span>
+        </div>
+        <div class="font-card-meta">
+          A clean, geometric sans-serif with excellent legibility at small sizes. Slightly rounded terminals add approachability. Pairs naturally with Fraunces without competing.
+        </div>
+        <div class="font-card-weights">
+          <div class="wt-chip used"><span class="wt-name">Light 300</span></div>
+          <div class="wt-chip used"><span class="wt-name">Regular 400</span></div>
+          <div class="wt-chip used"><span class="wt-name">Medium 500</span></div>
+          <div class="wt-chip used"><span class="wt-name">SemiBold 600</span></div>
+          <div class="wt-chip"><span class="wt-name">Bold 700</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type specimens -->
+    <div class="type-grid">
+
+      <!-- H1 -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">H1</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Fraunces</div>
+            <div class="type-spec"><strong>Weight</strong>700 Bold</div>
+            <div class="type-spec"><strong>Size</strong>clamp(2.6rem, 5vw, 3.5rem)</div>
+            <div class="type-spec"><strong>Leading</strong>1.08 (108%)</div>
+            <div class="type-spec"><strong>Tracking</strong>−0.035em</div>
+            <div class="type-spec"><strong>Italic em</strong>300 Light</div>
+            <div class="type-spec"><strong>Use</strong>Homepage hero only</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-h1">Eyes built for<br><em>the modern world.</em></div>
+        </div>
+      </div>
+
+      <!-- Product Title (PDP H1) -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">PDP Title</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Fraunces</div>
+            <div class="type-spec"><strong>Weight</strong>700 Bold</div>
+            <div class="type-spec"><strong>Size</strong>clamp(2rem, 3vw, 2.8rem)</div>
+            <div class="type-spec"><strong>Leading</strong>1.10 (110%)</div>
+            <div class="type-spec"><strong>Tracking</strong>−0.03em</div>
+            <div class="type-spec"><strong>Italic em</strong>300 Light, orange</div>
+            <div class="type-spec"><strong>Use</strong>Product page H1</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-pdp-title">Daily Eye<br><em>Gummies</em></div>
+        </div>
+      </div>
+
+      <!-- H2 -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">H2</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Fraunces</div>
+            <div class="type-spec"><strong>Weight</strong>700 Bold</div>
+            <div class="type-spec"><strong>Size</strong>clamp(2rem, 3.5vw, 2.6rem)</div>
+            <div class="type-spec"><strong>Leading</strong>1.12 (112%)</div>
+            <div class="type-spec"><strong>Tracking</strong>−0.03em</div>
+            <div class="type-spec"><strong>Use</strong>Section headings</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-h2">The science<br>of seeing <em>better.</em></div>
+        </div>
+      </div>
+
+      <!-- H3 -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">H3</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Fraunces</div>
+            <div class="type-spec"><strong>Weight</strong>600 SemiBold</div>
+            <div class="type-spec"><strong>Size</strong>1.7rem (27.2px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.20 (120%)</div>
+            <div class="type-spec"><strong>Tracking</strong>−0.022em</div>
+            <div class="type-spec"><strong>Use</strong>Card headings, FAQ section titles</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-h3">Macular pigment density<br>and why it matters</div>
+        </div>
+      </div>
+
+      <!-- H4 -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">H4</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Fraunces</div>
+            <div class="type-spec"><strong>Weight</strong>600 SemiBold</div>
+            <div class="type-spec"><strong>Size</strong>1.15rem (18.4px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.30 (130%)</div>
+            <div class="type-spec"><strong>Tracking</strong>−0.012em</div>
+            <div class="type-spec"><strong>Use</strong>Study card titles, ingredient headings</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-h4">Glare Recovery Improvement</div>
+        </div>
+      </div>
+
+      <!-- Eyebrow -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Eyebrow</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Plus Jakarta Sans</div>
+            <div class="type-spec"><strong>Weight</strong>700 Bold</div>
+            <div class="type-spec"><strong>Size</strong>0.72rem (11.5px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.0</div>
+            <div class="type-spec"><strong>Tracking</strong>+0.13em</div>
+            <div class="type-spec"><strong>Case</strong>ALL CAPS</div>
+            <div class="type-spec"><strong>Use</strong>Section labels above H2</div>
+          </div>
+        </div>
+        <div class="type-sample" style="padding-top:12px">
+          <div class="s-eyebrow">Clinically Studied · Lutemax® 2020</div>
+        </div>
+      </div>
+
+      <!-- Subtitle -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Subtitle</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Plus Jakarta Sans</div>
+            <div class="type-spec"><strong>Weight</strong>300 Light</div>
+            <div class="type-spec"><strong>Size</strong>1.1rem (17.6px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.75 (175%)</div>
+            <div class="type-spec"><strong>Color</strong>Slate #4A4A6A</div>
+            <div class="type-spec"><strong>Use</strong>Hero sub-copy, product subtitle</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-subtitle">One gummy a day. Powered by 10mg Lutemax® 2020 — the exact dose from clinical trials. Measurable improvements in glare recovery, eye moisture, and blue-light defence.</div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Body</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Plus Jakarta Sans</div>
+            <div class="type-spec"><strong>Weight</strong>300 Light</div>
+            <div class="type-spec"><strong>Size</strong>0.9375rem (15px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.80 (180%)</div>
+            <div class="type-spec"><strong>Color</strong>Slate #4A4A6A</div>
+            <div class="type-spec"><strong>Use</strong>Standard body paragraphs, FAQ answers</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-body">Lutein and zeaxanthin are the only dietary carotenoids that concentrate in the macula — forming a dense pigment that absorbs high-energy blue light before it reaches the photoreceptors. At the dose in Zeeno, these nutrients have been shown in multiple placebo-controlled trials to meaningfully improve glare recovery and visual contrast.</div>
+        </div>
+      </div>
+
+      <!-- Body Small -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Body Small</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Plus Jakarta Sans</div>
+            <div class="type-spec"><strong>Weight</strong>300 Light</div>
+            <div class="type-spec"><strong>Size</strong>0.84rem (13.4px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.80 (180%)</div>
+            <div class="type-spec"><strong>Color</strong>Slate #4A4A6A</div>
+            <div class="type-spec"><strong>Use</strong>Card body, review text, PDP detail tabs</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-body-sm">Results from a 12-month randomised placebo-controlled trial. All participants were healthy adults with regular screen use. Individual results may vary. These statements have not been evaluated by the FDA.</div>
+        </div>
+      </div>
+
+      <!-- Caption -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Caption</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Plus Jakarta Sans</div>
+            <div class="type-spec"><strong>Weight</strong>500 Medium</div>
+            <div class="type-spec"><strong>Size</strong>0.72rem (11.5px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.60 (160%)</div>
+            <div class="type-spec"><strong>Color</strong>Mist #8888AA</div>
+            <div class="type-spec"><strong>Use</strong>Image captions, footnotes, breadcrumbs, legal</div>
+          </div>
+        </div>
+        <div class="type-sample" style="padding-top:8px">
+          <div class="s-caption">¹ Nolan JM et al. (2016). 12-month randomised placebo-controlled clinical trial evaluating the effect of supplemental macular carotenoids on visual performance. Nutrients, 8(5), 279.</div>
+        </div>
+      </div>
+
+      <!-- Pull Quote -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Pull Quote</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Plus Jakarta Sans</div>
+            <div class="type-spec"><strong>Weight</strong>300 Light Italic</div>
+            <div class="type-spec"><strong>Size</strong>0.9rem (14.4px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.75 (175%)</div>
+            <div class="type-spec"><strong>Border</strong>3px solid Orange</div>
+            <div class="type-spec"><strong>Use</strong>Customer quotes, PDP trust signals</div>
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="s-pullquote">
+            "My eyes don't feel like sandpaper by 6pm anymore. Four months in and I won't go without it."
+            <cite>— Maya L., UX Designer · Verified Purchase</cite>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">CTA Button</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Plus Jakarta Sans</div>
+            <div class="type-spec"><strong>Weight</strong>700 Bold</div>
+            <div class="type-spec"><strong>Size</strong>1.0rem (16px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.0</div>
+            <div class="type-spec"><strong>Tracking</strong>+0.01em</div>
+            <div class="type-spec"><strong>Padding</strong>16px 36px</div>
+            <div class="type-spec"><strong>Radius</strong>100px (pill)</div>
+            <div class="type-spec"><strong>Use</strong>Primary action buttons only</div>
+          </div>
+        </div>
+        <div class="type-sample" style="display:flex;align-items:flex-start;padding-top:14px">
+          <div class="s-cta">🛒 Subscribe & Save — $45</div>
+        </div>
+      </div>
+
+      <!-- Stat / number -->
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Stat Display</div>
+          <div class="type-specs">
+            <div class="type-spec"><strong>Font</strong>Fraunces</div>
+            <div class="type-spec"><strong>Weight</strong>700 Bold</div>
+            <div class="type-spec"><strong>Size</strong>3.2rem (51.2px)</div>
+            <div class="type-spec"><strong>Leading</strong>1.0</div>
+            <div class="type-spec"><strong>Tracking</strong>−0.04em</div>
+            <div class="type-spec"><strong>Use</strong>Hero stats, social proof strip, science section big numbers</div>
+          </div>
+        </div>
+        <div class="type-sample" style="display:flex;gap:40px;padding-top:8px;flex-wrap:wrap">
+          <div>
+            <div class="s-stat">~17%</div>
+            <div class="s-caption" style="margin-top:5px">Glare recovery improvement</div>
+          </div>
+          <div>
+            <div class="s-stat" style="color:var(--cerulean)">~29%</div>
+            <div class="s-caption" style="margin-top:5px">Eye moisture improvement</div>
+          </div>
+          <div>
+            <div class="s-stat" style="color:var(--ocean)">46</div>
+            <div class="s-caption" style="margin-top:5px">Studies in meta-analysis</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /type-grid -->
+
+    <!-- Demo composition -->
+    <div class="pairing-demo" style="margin-top:40px">
+      <div class="pairing-demo-label">Full composition — how the type levels work together</div>
+      <div class="demo-eyebrow">The Science · Lutemax® 2020</div>
+      <div class="demo-h2">What the research<br><em>actually shows.</em></div>
+      <div class="demo-body">In a 12-month randomised placebo-controlled trial, daily supplementation at the dose in Zeeno produced meaningful, measurable improvements in three key visual performance metrics — in healthy adults with regular screen use.</div>
+      <div class="demo-btns">
+        <div class="demo-btn-primary">See the Studies</div>
+        <div class="demo-btn-ghost">Learn More</div>
+      </div>
+      <div class="demo-caption">¹ Nolan et al., 2016. Nutrients 8(5), 279. Results may vary. Not intended to diagnose, treat, cure, or prevent any disease.</div>
+    </div>
+
+    <!-- Do / Don't -->
+    <div class="rules">
+      <div class="rule-card rule-do">
+        <span class="rule-label">✓ Do</span>
+        Use Fraunces italic (300 Light) for emotional emphasis within bold headlines — it creates contrast and warmth without losing hierarchy. Reserve it for the last 1–2 words of a heading.
+      </div>
+      <div class="rule-card rule-dont">
+        <span class="rule-label">✗ Don't</span>
+        Mix Fraunces italic into body copy or use it at small sizes — the optical axis is tuned for display use. At 14px or below it becomes illegible and loses its character.
+      </div>
+      <div class="rule-card rule-do">
+        <span class="rule-label">✓ Do</span>
+        Use Plus Jakarta Sans 300 (Light) for all body copy. The low weight keeps long-form text airy and approachable, matching Zeeno's clean clinical tone.
+      </div>
+      <div class="rule-card rule-dont">
+        <span class="rule-label">✗ Don't</span>
+        Use font-weight 400+ for body paragraphs — it makes the page feel heavy and clinical in the wrong way. Reserve 500 and 600 for labels, badges, and navigation only.
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ═══ 02 — COLORS ═══ -->
+  <section>
+    <div class="sec-header">
+      <div class="sec-num">02</div>
+      <h2 class="sec-title">Color <em>System</em></h2>
+    </div>
+
+    <!-- ORANGES -->
+    <div class="color-section">
+      <div class="color-section-title">Orange Family — Primary Brand Palette</div>
+      <div class="color-row">
+
+        <div class="color-chip">
+          <div class="chip-swatch light-text" style="background:#E8763A">
+            <div class="chip-hex">#E8763A</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Orange</div>
+            <div class="chip-token">--zn-orange</div>
+            <div class="chip-use">Primary brand color. CTA buttons, active states, key highlights, badge backgrounds, hover accents, border-left on pull quotes. Use sparingly — it commands attention.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch light-text" style="background:#F5A265">
+            <div class="chip-hex">#F5A265</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Orange Light</div>
+            <div class="chip-token">--zn-orange-light</div>
+            <div class="chip-use">Hover states on orange buttons, gradient mid-stops, lifestyle section backgrounds, decorative glow elements. Never use as a standalone text color.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#FDE8D4">
+            <div class="chip-hex">#FDE8D4</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Orange Pale</div>
+            <div class="chip-token">--zn-orange-pale</div>
+            <div class="chip-use">Card borders with orange context, float card borders, subscription step dot backgrounds, hover fills on secondary elements. Good for warm tinting large areas.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#FEF4EC">
+            <div class="chip-hex">#FEF4EC</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Orange X-Pale</div>
+            <div class="chip-token">--zn-orange-xpale</div>
+            <div class="chip-use">Active variant card fill, pull quote background, selected state fills. The lightest warm tint — use for large selected or highlighted regions.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BLUES -->
+    <div class="color-section">
+      <div class="color-section-title">Blue Family — Secondary / Scientific Credibility</div>
+      <div class="color-row">
+
+        <div class="color-chip">
+          <div class="chip-swatch light-text" style="background:#1A5C96">
+            <div class="chip-hex">#1A5C96</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Ocean</div>
+            <div class="chip-token">--zn-ocean</div>
+            <div class="chip-use">Deep scientific authority. Float card "Glare Recovery" stat, study section third accent, footer science link hover. Use for the highest-credibility moments.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch light-text" style="background:#3A7EC8">
+            <div class="chip-hex">#3A7EC8</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Cerulean</div>
+            <div class="chip-token">--zn-cerulean</div>
+            <div class="chip-use">Secondary accent for science content, ghost button text/borders, ingredient color coding (blue family), eye diagram fills, "second stat" numbers. Complements orange without competing.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#6AA3DC">
+            <div class="chip-hex">#6AA3DC</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Cerulean Light</div>
+            <div class="chip-token">--zn-cerulean-light</div>
+            <div class="chip-use">Eye science diagram gradients, illustration fills. Rarely used as a UI color — primarily for decorative and visual elements.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#D4E8F8">
+            <div class="chip-hex">#D4E8F8</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Cerulean Pale</div>
+            <div class="chip-token">--zn-cerulean-pale</div>
+            <div class="chip-use">Float card borders (blue variant), ghost button borders, eye science diagram ring borders, subtle blue context fills.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#EEF5FC">
+            <div class="chip-hex">#EEF5FC</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Cerulean X-Pale</div>
+            <div class="chip-token">--zn-cerulean-xpale</div>
+            <div class="chip-use">Guarantee block background, trust/credibility zones. Creates visual differentiation from the orange-warm content areas without being cold.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GREENS -->
+    <div class="color-section">
+      <div class="color-section-title">Green Family — Confirmation & Savings</div>
+      <div class="color-row">
+
+        <div class="color-chip">
+          <div class="chip-swatch light-text" style="background:#2A9D72">
+            <div class="chip-hex">#2A9D72</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Green</div>
+            <div class="chip-token">--zn-green</div>
+            <div class="chip-use">Savings badges, "Best Value" labels, verified purchase checkmarks, discount tags, ATC success state, subscription benefit text. Never use for primary branding.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#E6F7F1">
+            <div class="chip-hex">#E6F7F1</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Green Pale</div>
+            <div class="chip-token">--zn-green-pale</div>
+            <div class="chip-use">Savings badge fills, subscription benefit banner background, discount tag fills. Pairs with Green text for any "good deal" signaling.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NEUTRALS -->
+    <div class="color-section">
+      <div class="color-section-title">Neutral Family — Text, Surfaces & Structure</div>
+      <div class="color-row">
+
+        <div class="color-chip">
+          <div class="chip-swatch light-text" style="background:#1A1A2E">
+            <div class="chip-hex">#1A1A2E</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Ink</div>
+            <div class="chip-token">--zn-text-dark</div>
+            <div class="chip-use">All primary headings, product title, nav logo, footer background, active tab backgrounds. The deepest tone — use only where maximum contrast is needed.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch light-text" style="background:#4A4A6A">
+            <div class="chip-hex">#4A4A6A</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Slate</div>
+            <div class="chip-token">--zn-text-mid</div>
+            <div class="chip-use">All body copy, product subtitles, card descriptions, FAQ answers, tab labels when inactive, ingredient descriptions. The default text color for readable content.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch light-text" style="background:#8888AA">
+            <div class="chip-hex">#8888AA</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Mist</div>
+            <div class="chip-token">--zn-text-light</div>
+            <div class="chip-use">Secondary labels, breadcrumbs, timestamps, footer column headers, helper text, "was price" strikethroughs, eyebrow label on dark backgrounds. Never for body copy.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#E8E8F0">
+            <div class="chip-hex">#E8E8F0</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Border</div>
+            <div class="chip-token">--zn-border</div>
+            <div class="chip-use">All dividers, card borders, table row separators, tab underlines, input borders, thumbnail borders in default state. The structural color — ubiquitous but invisible.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#FDF9F5">
+            <div class="chip-hex">#FDF9F5</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Off-White</div>
+            <div class="chip-token">--zn-off-white</div>
+            <div class="chip-use">Page background, purchase box fill, gallery main background, breadcrumb strip, alternate section backgrounds. Warmer than pure white — reduces eye strain.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#FEF5EA">
+            <div class="chip-hex">#FEF5EA</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">Cream</div>
+            <div class="chip-token">--zn-cream</div>
+            <div class="chip-use">Warm alternate section backgrounds, lifestyle sections, subtle warmth zones. Noticeably warmer than Off-White — use to signal lifestyle/emotional content areas.</div>
+          </div>
+        </div>
+
+        <div class="color-chip">
+          <div class="chip-swatch dark-text" style="background:#FFFFFF;box-shadow:inset 0 0 0 1px #e8e8f0">
+            <div class="chip-hex" style="color:rgba(0,0,0,.35)">#FFFFFF</div>
+          </div>
+          <div class="chip-body">
+            <div class="chip-name">White</div>
+            <div class="chip-token">#fff</div>
+            <div class="chip-use">Card fills on off-white backgrounds, float card backgrounds, purchase box white panels, CTA button text on Orange. Always on a warm background — never on pure white.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DO/DON'T colors -->
+    <div class="rules">
+      <div class="rule-card rule-do">
+        <span class="rule-label">✓ Do</span>
+        Pair Orange (#E8763A) with Ink (#1A1A2E) backgrounds for maximum contrast on dark sections (proof strip, footer). The warm-meets-deep combination is distinctly Zeeno.
+      </div>
+      <div class="rule-card rule-dont">
+        <span class="rule-label">✗ Don't</span>
+        Place Orange text on Cream or Off-White at body text sizes — the contrast ratio is too low for accessibility. Use Slate (#4A4A6A) for readable body text on warm backgrounds.
+      </div>
+      <div class="rule-card rule-do">
+        <span class="rule-label">✓ Do</span>
+        Use the Green family exclusively for financial/confirmatory signals (savings, verified, success). This preserves its meaning and prevents color fatigue.
+      </div>
+      <div class="rule-card rule-dont">
+        <span class="rule-label">✗ Don't</span>
+        Introduce new brand colors outside this system. The orange-blue tension is intentional and clinically grounded. Adding purple, teal, or warm reds dilutes the brand identity.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer style="border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    <div style="font-family:var(--ff-display);font-size:1.2rem;font-weight:700;color:var(--orange)">Zeeno.</div>
+    <div style="font-size:.69rem;color:var(--mist);font-weight:500;letter-spacing:.06em;text-transform:uppercase">Brand Guide v1.0 · 2026 · Confidential</div>
+  </footer>
+
+</div><!-- /guide-wrap -->
+
+</body>
+</html>
